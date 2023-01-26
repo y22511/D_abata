@@ -1,0 +1,8 @@
+js
+skin1 = pass
+skin2 = pass
+skin3 = pass
+
+cookie 
+   key      name
+   skin1    skinname
