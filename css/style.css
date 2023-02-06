@@ -1,4 +1,5 @@
 body {
-  background-image: url(/img/body_background.png);
+  background: url(/img/body_background.png) no-repeat center center;
+  background-attachment: fixed;
   background-size: cover;
 }/*# sourceMappingURL=style.css.map */
