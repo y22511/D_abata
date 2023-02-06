@@ -22,3 +22,5 @@ document.querySelector(".display").addEventListener("click", function(){
     let iii = Cookie();
     console.log(iii);
 })
+
+//-------------ガチャ--------------//
