@@ -109,4 +109,45 @@ body {
   width: auto;
   max-height: 100%;
   display: block;
+}
+
+#menu body {
+  background: url(/img/body_background.png) no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+#menu .backbutton {
+  background-color: #ec8dd8;
+  border-radius: 8px;
+  box-shadow: 0 4px 0 #69004f;
+  color: #fff;
+  display: block;
+  padding: 8px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+#menu .backbutton::after {
+  content: "";
+  display: inline-block;
+  border-style: solid;
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent #fff;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+#menu .backbutton:active {
+  top: 4px;
+  box-shadow: 0 0 0 #C62828;
+}
+#menu .backbutton {
+  max-width: 120px;
+  margin-top: 20px;
+  margin-left: 20px;
 }/*# sourceMappingURL=style.css.map */
