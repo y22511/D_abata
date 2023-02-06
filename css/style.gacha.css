@@ -9,6 +9,8 @@
   text-align: center;
   text-decoration: none;
   width: 100%;
+  position: absolute;
+  left: 0;
 }
 
 .backbutton::after {
@@ -38,6 +40,7 @@
 }
 
 h1 {
+  margin-top: 50px;
   text-align: center;
   padding: 20px 0;
   color: rgb(77, 52, 52);
@@ -59,6 +62,76 @@ h1 {
   height: auto;
   
 }
+
+.summonbutton {
+  font-size: 30px;
+  line-height: 40px;
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 60px;
+  padding: 10px;
+  transition: all .1s ease-in-out;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: rgb(255, 79, 79);
+}
+
+.summonbutton:before,
+.summonbutton:after {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  content: '';
+  border: 30px solid transparent;
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
+}
+
+.summonbutton:before {
+  right: 100%;
+  border-right-color: rgb(255, 79, 79);
+}
+
+.summonbutton:after {
+  left: 100%;
+  border-left-color: rgb(255, 79, 79);
+}
+
+.sbutton {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.TOP {
+  display:flex;
+}
+
+.coin {
+  width: 40px;
+  height: auto;
+}
+
+.remainingcoin {
+  display:flex;
+  text-align:left;
+  margin-top: 20px;
+  margin-right: 20px;
+  background-color: #fff;
+  border: 2px solid #000000;
+  border-radius: 10px;
+	width: 150px;
+	height: 35px;
+  position: absolute;
+  right: 0;
+}
+p {
+  margin: 10px;
+}
+
 
 body {
   background-image: url(/img/body_background.png);
