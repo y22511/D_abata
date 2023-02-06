@@ -1,0 +1,153 @@
+body {
+  background: url(/img/body_background.png) no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#gacha .backbutton {
+  background-color: #ec8dd8;
+  border-radius: 8px;
+  box-shadow: 0 4px 0 #69004f;
+  color: #fff;
+  display: block;
+  padding: 8px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+#gacha .backbutton::after {
+  content: "";
+  display: inline-block;
+  border-style: solid;
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent #fff;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+#gacha .backbutton:active {
+  top: 4px;
+  box-shadow: 0 0 0 #C62828;
+}
+#gacha .backbutton {
+  max-width: 120px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+#gacha h1 {
+  text-align: center;
+  padding: 20px 0;
+  color: rgb(77, 52, 52);
+  font-size: 50px;
+  color: #fff;
+  text-shadow: 2px 2px 1px #ff0000, -2px 2px 1px #ff0000, 2px -2px 1px #ff0000, -2px -2px 1px #ff0000, 2px 0px 1px #ff0000, 0px 2px 1px #ff0000, -2px 0px 1px #ff0000, 0px -2px 1px #ff0000;
+}
+#gacha .gachamain {
+  display: block;
+  margin: auto;
+  width: 20%;
+  height: auto;
+}
+#gacha .summonbutton {
+  font-size: 14px;
+  line-height: 40px;
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 42px;
+  transition: all 0.1s ease-in-out;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: red;
+}
+#gacha .summonbutton:before,
+#gacha .summonbutton:after {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  content: "";
+  border: 21px solid transparent;
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+}
+#gacha .summonbutton:before {
+  right: 100%;
+  border-right-color: red;
+}
+#gacha .summonbutton:after {
+  left: 100%;
+  border-left-color: red;
+}
+#gacha .summonbutton:hover {
+  opacity: 0.7;
+}
+#gacha .summonbutton:hover #top {
+  text-align: center;
+}
+#gacha .summonbutton:hover #top #top-title {
+  width: 1200px;
+  height: 160px;
+  align-items: center;
+  display: flex;
+}
+#gacha .summonbutton:hover #top #top-title .top-title {
+  color: #F44B4B;
+  background: #FFB5DD;
+  font-weight: bold;
+  font-size: 80px;
+  margin: 0px auto;
+}
+#gacha .summonbutton:hover #top #top-title .top-img1 {
+  transform: rotate(24deg) translateX(-40px) translateY(40px);
+  width: auto;
+  max-height: 100%;
+  display: block;
+}
+
+#menu body {
+  background: url(/img/body_background.png) no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+#menu .backbutton {
+  background-color: #ec8dd8;
+  border-radius: 8px;
+  box-shadow: 0 4px 0 #69004f;
+  color: #fff;
+  display: block;
+  padding: 8px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+#menu .backbutton::after {
+  content: "";
+  display: inline-block;
+  border-style: solid;
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent #fff;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+#menu .backbutton:active {
+  top: 4px;
+  box-shadow: 0 0 0 #C62828;
+}
+#menu .backbutton {
+  max-width: 120px;
+  margin-top: 20px;
+  margin-left: 20px;
+}/*# sourceMappingURL=style.css.map */
