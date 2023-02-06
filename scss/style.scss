@@ -4,6 +4,7 @@ body {
     background-size: cover;
 }
 
+<<<<<<< Updated upstream
 #gacha {
     .backbutton {
         background-color: #ec8dd8;
@@ -36,6 +37,32 @@ body {
     .backbutton:active {
         top: 4px;
         box-shadow: 0 0 0 #C62828;
+=======
+//---------トップ画面----------//
+#top {
+    text-align: center;
+    #top-title {
+        width: 1200px;
+        height: 160px;
+        margin-top: 120px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        .top-title {
+            color: #F44B4B;
+            background: #FFB5DD;
+            font-weight: bold;
+            font-size: 80px;
+            border-radius: 64px / 40px;
+            padding: 32px 24px;
+        }
+        .top-img1 {
+            transform: rotate(24deg) translateX(-64px) translateY(16px);
+            width: auto;
+            max-height: 184%;
+            display: block;
+        }
+>>>>>>> Stashed changes
     }
 
     .backbutton {
