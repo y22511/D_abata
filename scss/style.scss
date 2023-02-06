@@ -5,6 +5,7 @@ body {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 //---------トップ画面----------//
 #top {
@@ -60,6 +61,9 @@ body {
 
 
 //---------ガチャ画面----------//
+=======
+<<<<<<< Updated upstream
+>>>>>>> parent of 57f3806 (更新)
 #gacha {
     .backbutton {
         background-color: #ec8dd8;
@@ -73,6 +77,7 @@ body {
         text-decoration: none;
         width: 100%;
     }
+
     .backbutton::after {
         content: '';
         display: inline-block;
@@ -87,45 +92,111 @@ body {
         right: 20px;
         transform: translateY(-50%);
     }
+
     .backbutton:active {
         top: 4px;
         box-shadow: 0 0 0 #C62828;
-        .backbutton {
-            max-width: 120px;
-            margin-top: 20px;
-            margin-left: 20px;
+=======
+//---------トップ画面----------//
+#top {
+    text-align: center;
+    #top-title {
+        width: 1200px;
+        height: 160px;
+        margin-top: 120px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        .top-title {
+            color: #F44B4B;
+            background: #FFB5DD;
+            font-weight: bold;
+            font-size: 80px;
+            border-radius: 64px / 40px;
+            padding: 32px 24px;
         }
-        h1 {
-            text-align: center;
-            padding: 20px 0;
-            color: rgb(77, 52, 52);
-            font-size: 50px;
-            color: #fff;
-            text-shadow: 2px 2px 1px #ff0000,
-                -2px 2px 1px #ff0000,
-                2px -2px 1px #ff0000,
-                -2px -2px 1px #ff0000,
-                2px 0px 1px #ff0000,
-                0px 2px 1px #ff0000,
-                -2px 0px 1px #ff0000,
-                0px -2px 1px #ff0000;
-        }
-        .gachamain {
+        .top-img1 {
+            transform: rotate(24deg) translateX(-64px) translateY(16px);
+            width: auto;
+            max-height: 184%;
             display: block;
-            margin: auto;
-            width: 20%;
-            height: auto;
-
         }
-        .summonbutton {
-            font-size: 14px;
-            line-height: 40px;
-            position: relative;
-            display: inline-block;
-            width: 150px;
-            height: 42px;
-            transition: all .1s ease-in-out;
+>>>>>>> Stashed changes
+    }
+
+    .backbutton {
+        max-width: 120px;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        padding: 20px 0;
+        color: rgb(77, 52, 52);
+        font-size: 50px;
+        color: #fff;
+        text-shadow: 2px 2px 1px #ff0000,
+            -2px 2px 1px #ff0000,
+            2px -2px 1px #ff0000,
+            -2px -2px 1px #ff0000,
+            2px 0px 1px #ff0000,
+            0px 2px 1px #ff0000,
+            -2px 0px 1px #ff0000,
+            0px -2px 1px #ff0000;
+    }
+
+    .gachamain {
+        display: block;
+        margin: auto;
+        width: 20%;
+        height: auto;
+
+    }
+
+    .summonbutton {
+        font-size: 14px;
+        line-height: 40px;
+        position: relative;
+        display: inline-block;
+        width: 150px;
+        height: 42px;
+        transition: all .1s ease-in-out;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background-color: red;
+    }
+
+    .summonbutton:before,
+    .summonbutton:after {
+        position: absolute;
+        top: 0;
+        width: 0;
+        height: 0;
+        content: '';
+        border: 21px solid transparent;
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+    }
+
+    .summonbutton:before {
+        right: 100%;
+        border-right-color: red;
+    }
+
+    .summonbutton:after {
+        left: 100%;
+        border-left-color: red;
+    }
+
+    .summonbutton:hover {
+        opacity: .7;
+
+        //---------トップ画面----------//
+        #top {
             text-align: center;
+<<<<<<< HEAD
             text-decoration: none;
             color: #fff;
             background-color: red;
@@ -288,6 +359,30 @@ body {
             border-right: 20px solid transparent;
             border-left: 20px solid transparent;
 >>>>>>> d5acc59f2381927a8caf634db11446e4aba6196d
+=======
+
+            #top-title {
+                width: 1200px;
+                height: 160px;
+                align-items: center;
+                display: flex;
+
+                .top-title {
+                    color: #F44B4B;
+                    background: #FFB5DD;
+                    font-weight: bold;
+                    font-size: 80px;
+                    margin: 0px auto;
+                }
+
+                .top-img1 {
+                    transform: rotate(24deg) translateX(-40px) translateY(40px);
+                    width: auto;
+                    max-height: 100%;
+                    display: block;
+                }
+            }
+>>>>>>> parent of 57f3806 (更新)
         }
     }
 }
