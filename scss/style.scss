@@ -4,7 +4,7 @@ body {
     background-size: cover;
 }
 
-//---------トップ画面----------//
+//==========トップ画面==========//
 #top {
     text-align: center;
     #top-title {
@@ -30,78 +30,122 @@ body {
     }
 }
 
-//---------メニュー画面----------//
+//==========メニュー画面==========//
 
-//---------ガチャ画面----------//
+//==========ガチャ画面==========//
 #gacha {
-    .backbutton {
-        background-color: #ec8dd8;
-        border-radius: 8px;
-        box-shadow: 0 4px 0 #69004f;
-        color: #fff;
-        display: block;
-        padding: 8px;
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        width: 100%;
-    }
-    .backbutton::after {
-        content: '';
-        display: inline-block;
-        border-style: solid;
-        border-width: 8px 0 8px 8px;
-        border-color: transparent transparent transparent #fff;
-        display: inline-block;
-        width: 0;
-        height: 0;
-        position: absolute;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
-    }
-    .backbutton:active {
-        top: 4px;
-        box-shadow: 0 0 0 #C62828;
+    .gacha-top {
+        display:flex;
+        //-----backbutton-----//
         .backbutton {
+            background-color: #ec8dd8;
+            border-radius: 8px;
+            box-shadow: 0 4px 0 #69004f;
+            color: #fff;
+            display: block;
+            padding: 8px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            width: 100%;
+            position: absolute;
+            left: 0;
             max-width: 120px;
             margin-top: 20px;
             margin-left: 20px;
         }
-        h1 {
-            text-align: center;
-            padding: 20px 0;
-            color: rgb(77, 52, 52);
-            font-size: 50px;
-            color: #fff;
-            text-shadow: 2px 2px 1px #ff0000,
-                -2px 2px 1px #ff0000,
-                2px -2px 1px #ff0000,
-                -2px -2px 1px #ff0000,
-                2px 0px 1px #ff0000,
-                0px 2px 1px #ff0000,
-                -2px 0px 1px #ff0000,
-                0px -2px 1px #ff0000;
+        .backbutton::after {
+            content: '';
+            display: inline-block;
+            border-style: solid;
+            border-width: 8px 0 8px 8px;
+            border-color: transparent transparent transparent #fff;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
         }
-        .gachamain {
-            display: block;
-            margin: auto;
-            width: 20%;
-            height: auto;
-
+        .backbutton:active {
+            top: 4px;
+            box-shadow: 0 0 0 #C62828;
         }
+        //-----mycoin-----//
+        .mycoin {
+            display:flex;
+            text-align:left;
+            margin-top: 20px;
+            margin-right: 20px;
+            background-color: #fff;
+            border: 2px solid #000000;
+            border-radius: 10px;
+            width: 150px;
+            height: 35px;
+            position: absolute;
+            right: 0;
+            .coin {
+                width: 40px;
+                height: auto;
+            }
+            p {
+                margin: 10px;
+            }
+        }
+    }
+    //-----h1-----//
+    h1 {
+        margin-top: 50px;
+        text-align: center;
+        padding: 20px 0;
+        color: rgb(77, 52, 52);
+        font-size: 50px;
+        color: #fff;
+        text-shadow: 2px 2px 1px #ff0000,
+                    -2px 2px 1px #ff0000,
+                    2px -2px 1px #ff0000,
+                    -2px -2px 1px #ff0000,
+                    2px 0px 1px #ff0000,
+                    0px 2px 1px #ff0000,
+                    -2px 0px 1px #ff0000,
+                    0px -2px 1px #ff0000;
+    }
+    //-----gacha-main-----//
+    .gacha-main {
+        display: block;
+        margin: auto;
+        width: 20%;
+        height: auto;
+    }
+    //-----sbutton-----//
+    .sbutton {
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        //-----summonbutton-----//
         .summonbutton {
-            font-size: 14px;
+            font-size: 30px;
             line-height: 40px;
             position: relative;
             display: inline-block;
-            width: 150px;
-            height: 42px;
+            width: 300px;
+            height: 60px;
+            padding: 10px;
             transition: all .1s ease-in-out;
             text-align: center;
             text-decoration: none;
             color: #fff;
-            background-color: red;
+            background-color: rgb(255, 79, 79);
+        }
+        .summonbutton:before {
+            right: 100%;
+            border-right-color: rgb(255, 79, 79);
+        }
+        .summonbutton:after {
+            left: 100%;
+            border-left-color: rgb(255, 79, 79);
         }
         .summonbutton:before,
         .summonbutton:after {
@@ -110,20 +154,9 @@ body {
             width: 0;
             height: 0;
             content: '';
-            border: 21px solid transparent;
-            border-right: 12px solid transparent;
-            border-left: 12px solid transparent;
-        }
-        .summonbutton:before {
-            right: 100%;
-            border-right-color: red;
-        }
-        .summonbutton:after {
-            left: 100%;
-            border-left-color: red;
-        }
-        .summonbutton:hover {
-            opacity: .7;
+            border: 30px solid transparent;
+            border-right: 20px solid transparent;
+            border-left: 20px solid transparent;
         }
     }
 }
