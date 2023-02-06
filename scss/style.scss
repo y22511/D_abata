@@ -4,6 +4,28 @@ body {
     background-size: cover;  
 }
 
-//---------
+//---------トップ画面----------//
+#top {
+    text-align: center;
+    #top-title {
+        width: 1200px;
+        height: 160px;
+        align-items: center;
+        display: flex;
+        .top-title {
+            color: #F44B4B;
+            background: #FFB5DD;
+            font-weight: bold;
+            font-size: 80px;
+            margin: 0px auto;
+        }
+        .top-img1 {
+            transform: rotate(24deg) translateX(-40px) translateY(40px);
+            width: auto;
+            max-height: 100%;
+            display: block;
+        }
+    }
+}
 
 

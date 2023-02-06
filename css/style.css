@@ -2,4 +2,27 @@ body {
   background: url(/img/body_background.png) no-repeat center center;
   background-attachment: fixed;
   background-size: cover;
+}
+
+#top {
+  text-align: center;
+}
+#top #top-title {
+  width: 1200px;
+  height: 160px;
+  align-items: center;
+  display: flex;
+}
+#top #top-title .top-title {
+  color: #F44B4B;
+  background: #FFB5DD;
+  font-weight: bold;
+  font-size: 80px;
+  margin: 0px auto;
+}
+#top #top-title .top-img1 {
+  transform: rotate(24deg) translateX(-40px) translateY(40px);
+  width: auto;
+  max-height: 100%;
+  display: block;
 }/*# sourceMappingURL=style.css.map */
