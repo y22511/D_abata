@@ -10,25 +10,33 @@ body {
 #top #top-title {
   width: auto;
   height: 160px;
+<<<<<<< HEAD
   margin: 120px 0 120px 240px;
+=======
+>>>>>>> d5acc59f2381927a8caf634db11446e4aba6196d
   align-items: center;
-  justify-content: center;
   display: flex;
 }
 #top #top-title .top-title {
   color: #F44B4B;
   background: #FFB5DD;
   font-weight: bold;
+<<<<<<< HEAD
   font-size: 4em;
   border-radius: 64px/40px;
   padding: 32px 24px;
+=======
+  font-size: 80px;
+  margin: 0px auto;
+>>>>>>> d5acc59f2381927a8caf634db11446e4aba6196d
 }
 #top #top-title .top-img1 {
-  transform: rotate(24deg) translateX(-64px) translateY(16px);
+  transform: rotate(24deg) translateX(-40px) translateY(40px);
   width: auto;
-  max-height: 184%;
+  max-height: 100%;
   display: block;
 }
+<<<<<<< HEAD
 #top #top-menu li {
   font-size: 2em;
   background-color: rgba(255, 92, 0, 0.3);
@@ -37,6 +45,13 @@ body {
 }
 
 #gacha .backbutton {
+=======
+
+#gacha .gacha-top {
+  display: flex;
+}
+#gacha .gacha-top .backbutton {
+>>>>>>> d5acc59f2381927a8caf634db11446e4aba6196d
   background-color: #ec8dd8;
   border-radius: 8px;
   box-shadow: 0 4px 0 #69004f;
@@ -47,8 +62,18 @@ body {
   text-align: center;
   text-decoration: none;
   width: 100%;
+<<<<<<< HEAD
 }
 #gacha .backbutton::after {
+=======
+  position: absolute;
+  left: 0;
+  max-width: 120px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+#gacha .gacha-top .backbutton::after {
+>>>>>>> d5acc59f2381927a8caf634db11446e4aba6196d
   content: "";
   display: inline-block;
   border-style: solid;
@@ -62,6 +87,7 @@ body {
   right: 20px;
   transform: translateY(-50%);
 }
+<<<<<<< HEAD
 #gacha .backbutton:active {
   top: 4px;
   box-shadow: 0 0 0 #C62828;
@@ -72,6 +98,34 @@ body {
   margin-left: 20px;
 }
 #gacha .backbutton:active h1 {
+=======
+#gacha .gacha-top .backbutton:active {
+  top: 4px;
+  box-shadow: 0 0 0 #C62828;
+}
+#gacha .gacha-top .mycoin {
+  display: flex;
+  text-align: left;
+  margin-top: 20px;
+  margin-right: 20px;
+  background-color: #fff;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  width: 150px;
+  height: 35px;
+  position: absolute;
+  right: 0;
+}
+#gacha .gacha-top .mycoin .coin {
+  width: 40px;
+  height: auto;
+}
+#gacha .gacha-top .mycoin p {
+  margin: 10px;
+}
+#gacha h1 {
+  margin-top: 50px;
+>>>>>>> d5acc59f2381927a8caf634db11446e4aba6196d
   text-align: center;
   padding: 20px 0;
   color: rgb(77, 52, 52);
@@ -79,12 +133,17 @@ body {
   color: #fff;
   text-shadow: 2px 2px 1px #ff0000, -2px 2px 1px #ff0000, 2px -2px 1px #ff0000, -2px -2px 1px #ff0000, 2px 0px 1px #ff0000, 0px 2px 1px #ff0000, -2px 0px 1px #ff0000, 0px -2px 1px #ff0000;
 }
+<<<<<<< HEAD
 #gacha .backbutton:active .gachamain {
+=======
+#gacha .gacha-main {
+>>>>>>> d5acc59f2381927a8caf634db11446e4aba6196d
   display: block;
   margin: auto;
   width: 20%;
   height: auto;
 }
+<<<<<<< HEAD
 #gacha .backbutton:active .summonbutton {
   font-size: 14px;
   line-height: 40px;
@@ -92,19 +151,51 @@ body {
   display: inline-block;
   width: 150px;
   height: 42px;
+=======
+#gacha .sbutton {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#gacha .sbutton .summonbutton {
+  font-size: 30px;
+  line-height: 40px;
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 60px;
+  padding: 10px;
+>>>>>>> d5acc59f2381927a8caf634db11446e4aba6196d
   transition: all 0.1s ease-in-out;
   text-align: center;
   text-decoration: none;
   color: #fff;
+<<<<<<< HEAD
   background-color: red;
 }
 #gacha .backbutton:active .summonbutton:before,
 #gacha .backbutton:active .summonbutton:after {
+=======
+  background-color: rgb(255, 79, 79);
+}
+#gacha .sbutton .summonbutton:before {
+  right: 100%;
+  border-right-color: rgb(255, 79, 79);
+}
+#gacha .sbutton .summonbutton:after {
+  left: 100%;
+  border-left-color: rgb(255, 79, 79);
+}
+#gacha .sbutton .summonbutton:before,
+#gacha .sbutton .summonbutton:after {
+>>>>>>> d5acc59f2381927a8caf634db11446e4aba6196d
   position: absolute;
   top: 0;
   width: 0;
   height: 0;
   content: "";
+<<<<<<< HEAD
   border: 21px solid transparent;
   border-right: 12px solid transparent;
   border-left: 12px solid transparent;
@@ -119,4 +210,9 @@ body {
 }
 #gacha .backbutton:active .summonbutton:hover {
   opacity: 0.7;
+=======
+  border: 30px solid transparent;
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
+>>>>>>> d5acc59f2381927a8caf634db11446e4aba6196d
 }/*# sourceMappingURL=style.css.map */
