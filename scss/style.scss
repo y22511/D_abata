@@ -66,4 +66,40 @@ body {
         height: auto;
         
       }
+    
+      .summonbutton {
+        font-size: 14px;
+        line-height: 40px;
+        position: relative;
+        display: inline-block;
+        width: 150px;
+        height: 42px;
+        transition: all .1s ease-in-out;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background-color: red;
+    }
+    .summonbutton:before,
+    .summonbutton:after {
+        position: absolute;
+        top: 0;
+        width: 0;
+        height: 0;
+        content: '';
+        border: 21px solid transparent;
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+    }
+    .summonbutton:before {
+        right: 100%;
+        border-right-color: red;
+    }
+    .summonbutton:after {
+        left: 100%;
+        border-left-color: red;
+    }
+    .summonbutton:hover {
+        opacity: .7;
+    }
 }
