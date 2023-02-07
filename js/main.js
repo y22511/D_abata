@@ -54,3 +54,7 @@ function pullGacha(){
     document.cookie = 'myCoin =' + myCoin;
     myCoinCounter();
 }
+document.querySelector('.gacha-main').addEventListener('click', function(){
+    myCoin += 5;
+    myCoinCounter();
+})
