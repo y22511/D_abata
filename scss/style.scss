@@ -82,6 +82,13 @@ body {
 
     #main {
         display: flex;
+        .select {
+            display: flex;
+            .itemlist {
+                display: flex;
+                justify-content: center;
+            }
+        }
     }//menu-main
 
 }

@@ -74,6 +74,13 @@ body {
 #menu #main {
   display: flex;
 }
+#menu #main .select {
+  display: flex;
+}
+#menu #main .select .itemlist {
+  display: flex;
+  justify-content: center;
+}
 
 #gacha #gacha-top {
   display: flex;
