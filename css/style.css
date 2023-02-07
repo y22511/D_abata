@@ -71,8 +71,8 @@ body {
   top: 4px;
   box-shadow: 0 0 0 #C62828;
 }
-#menu #mains {
-  background: #000000;
+#menu #menu-main {
+  display: flex;
 }
 
 #gacha #gacha-top {

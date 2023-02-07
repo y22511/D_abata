@@ -80,9 +80,8 @@ body {
         box-shadow: 0 0 0 #C62828;
     }//backbutton:active
 
-    #mains {
-    
-        background: #000000;
+    #menu-main {
+        display: flex;
         // .select {
         //     display: flex;
         //     .itemlist {
