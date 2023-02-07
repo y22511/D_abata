@@ -55,10 +55,12 @@ body {
         text-align: center;
         text-decoration: none;
         width: 100%;
+        position: absolute;
+        left: 0;
         max-width: 120px;
         margin-top: 20px;
         margin-left: 20px;
-    }//backbutton
+    }
     .backbutton::after {
         content: '';
         display: inline-block;
@@ -77,6 +79,11 @@ body {
         top: 4px;
         box-shadow: 0 0 0 #C62828;
     }//backbutton:active
+
+    #main {
+        display: flex;
+    }//menu-main
+
 }
 
 
