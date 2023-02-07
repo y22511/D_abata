@@ -180,8 +180,8 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        //summonbutton//
-        .summonbutton {
+        //gacha-btn.gacha-btn//
+        .gacha-btn {
             font-size: 30px;
             line-height: 40px;
             position: relative;
@@ -195,8 +195,8 @@ body {
             color: #fff;
             background-color: rgb(255, 79, 79);
         }
-        .summonbutton:before,
-        .summonbutton:after {
+        .gacha-btn:before,
+        .gacha-btn:after {
             position: absolute;
             top: 0;
             width: 0;
@@ -206,11 +206,11 @@ body {
             border-right: 20px solid transparent;
             border-left: 20px solid transparent;
         }
-        .summonbutton:before {
+        .gacha-btn:before {
             right: 100%;
             border-right-color: rgb(255, 79, 79);
         }
-        .summonbutton:after {
+        .gacha-btn:after {
             left: 100%;
             border-right-color: rgb(255, 79, 79);
             transform: rotate(180deg);
