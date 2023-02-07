@@ -71,15 +71,8 @@ body {
   top: 4px;
   box-shadow: 0 0 0 #C62828;
 }
-#menu #main {
-  display: flex;
-}
-#menu #main .select {
-  display: flex;
-}
-#menu #main .select .itemlist {
-  display: flex;
-  justify-content: center;
+#menu #mains {
+  background: #000000;
 }
 
 #gacha #gacha-top {

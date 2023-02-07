@@ -80,15 +80,16 @@ body {
         box-shadow: 0 0 0 #C62828;
     }//backbutton:active
 
-    #main {
-        display: flex;
-        .select {
-            display: flex;
-            .itemlist {
-                display: flex;
-                justify-content: center;
-            }
-        }
+    #mains {
+    
+        background: #000000;
+        // .select {
+        //     display: flex;
+        //     .itemlist {
+        //         display: flex;
+        //         justify-content: center;
+        //     }
+        // }
     }//menu-main
 
 }
