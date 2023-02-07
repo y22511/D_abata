@@ -1,25 +1,29 @@
 //-------------Cookie--------------//
-function NameCookie() {
-    var key=[2];
+function nameCookie() {
+    var name=[2];
     var p = 0;
     var r = document.cookie.split(';');
-    r.forEach(function(value) {
-        content = value.split('=');
-        key[p] = content[0];
+    r.forEach(function(e) {
+        content = e.split('=');
+        name[p] = content[0];
         p++;
     })
     return key;
 }
-function ValueCookie() {
-    var key=[2];
+function valueCookie() {
+    var value=[2];
     var p = 0;
     var r = document.cookie.split(';');
-    r.forEach(function(value) {
-        content = value.split('=');
-        key[p] = content[0];
+    r.forEach(function(e) {
+        content = e.split('=');
+        value[p] = content[1];
+        console.log(value[p]);
         p++;
     })
-    return key;
+    return value;
+}
+function searchCookie(item) {
+    if (item == Name[0]);
 }
 
 //-------------Test--------------//
@@ -34,13 +38,13 @@ function ValueCookie() {
 //     console.log(iii);
 // })
 //==============Main==============//
-document.cookie = 'myCoin = 1 + 1';
 let myCoin = document.cookie;
+// document.cookie = 'myCoin =' + NameCookie();
 
 //==============ガチャ==============//
 document.querySelector('.gacha-btn').addEventListener('click', function(){
     pullGacha();
 })
 function pullGacha(){
-    console.log(keyCookie());
+    console.log(valueCookie());
 }
