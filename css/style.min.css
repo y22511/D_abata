@@ -75,7 +75,7 @@ body {
   box-shadow: 0 0 0 #C62828;
 }
 
-#gacha .backbutton {
+#gacha #gacha-top .backbutton {
   background-color: #ec8dd8;
   border-radius: 8px;
   box-shadow: 0 4px 0 #69004f;
@@ -86,8 +86,11 @@ body {
   text-align: center;
   text-decoration: none;
   width: 100%;
+  max-width: 120px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
-#gacha .backbutton::after {
+#gacha #gacha-top .backbutton::after {
   content: "";
   display: inline-block;
   border-style: solid;
@@ -101,14 +104,9 @@ body {
   right: 20px;
   transform: translateY(-50%);
 }
-#gacha .backbutton:active {
+#gacha #gacha-top .backbutton:active {
   top: 4px;
   box-shadow: 0 0 0 #C62828;
-}
-#gacha .backbutton {
-  max-width: 120px;
-  margin-top: 20px;
-  margin-left: 20px;
 }
 #gacha h1 {
   text-align: center;
