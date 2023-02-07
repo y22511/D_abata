@@ -149,7 +149,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-#gacha #sbutton .summonbutton {
+#gacha #sbutton .gacha-btn {
   font-size: 30px;
   line-height: 40px;
   position: relative;
@@ -163,8 +163,8 @@ body {
   color: #fff;
   background-color: rgb(255, 79, 79);
 }
-#gacha #sbutton .summonbutton:before,
-#gacha #sbutton .summonbutton:after {
+#gacha #sbutton .gacha-btn:before,
+#gacha #sbutton .gacha-btn:after {
   position: absolute;
   top: 0;
   width: 0;
@@ -174,11 +174,11 @@ body {
   border-right: 20px solid transparent;
   border-left: 20px solid transparent;
 }
-#gacha #sbutton .summonbutton:before {
+#gacha #sbutton .gacha-btn:before {
   right: 100%;
   border-right-color: rgb(255, 79, 79);
 }
-#gacha #sbutton .summonbutton:after {
+#gacha #sbutton .gacha-btn:after {
   left: 100%;
   border-right-color: rgb(255, 79, 79);
   transform: rotate(180deg);
