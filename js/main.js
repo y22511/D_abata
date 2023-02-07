@@ -1,50 +1,60 @@
 //-------------Cookie--------------//
 function nameCookie() {
-    var name=[2];
-    var p = 0;
-    var r = document.cookie.split(';');
+    let name=[2];
+    let i = 0;
+    let r = document.cookie.replace(/ /g,"").split(';');
     r.forEach(function(e) {
         content = e.split('=');
-        name[p] = content[0];
-        p++;
+        name[i] = content[0];
+        i++;
     })
-    return key;
+    return name;
 }
 function valueCookie() {
-    var value=[2];
-    var p = 0;
-    var r = document.cookie.split(';');
+    let value=[2];
+    let i = 0;
+    let r = document.cookie.replace(/ /g,"").split(';');
     r.forEach(function(e) {
         content = e.split('=');
-        value[p] = content[1];
-        console.log(value[p]);
-        p++;
+        value[i] = content[1];
+        i++;
     })
     return value;
 }
+//-----nameを入れるとvalueが返ってくる-----//
 function searchCookie(item) {
-    if (item == Name[0]);
+    let i = 0;
+    let itemValue = "";
+    nameCookie().forEach(function() {
+        if (item == nameCookie()[i]) {itemValue =  valueCookie()[i]}
+        i++;
+    })
+    return itemValue;
 }
 
-//-------------Test--------------//
-// document.querySelector(".save").addEventListener("click", function(){
-//     document.cookie = 'key1= 1234; max-age= 5';
-//     document.cookie = 'key2= 5678';
-//     document.cookie = 'key3= 9999';
-// })
-// document.querySelector(".display").addEventListener("click", function(){
-//     // console.log(document.cookie);
-//     let iii = Cookie();
-//     console.log(iii);
-// })
 //==============Main==============//
-let myCoin = document.cookie;
-// document.cookie = 'myCoin =' + NameCookie();
+// let myCoin = 100;
+// document.cookie = 'myCoin=' + myCoin;
+myCoin = searchCookie('myCoin');
+myCoinCounter();
 
+function myCoinCounter() {
+    let myCoinNum = document.querySelector('.mycoin-num');
+    myCoinNum.innerHTML = '×' +  myCoin;
+}
 //==============ガチャ==============//
+
+//-----ガチャを回したとき-----//
 document.querySelector('.gacha-btn').addEventListener('click', function(){
     pullGacha();
 })
 function pullGacha(){
-    console.log(valueCookie());
+    if (myCoin <= 0) {console.log("コインが足りないよ"); return;}
+    myCoin -= 1;
+    document.cookie = 'myCoin =' + myCoin;
+    myCoinCounter();
 }
+document.querySelector('.gacha-main').addEventListener('click', function(){
+    myCoin += 5;
+    myCoinCounter();
+})
