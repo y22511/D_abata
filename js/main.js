@@ -33,15 +33,16 @@ function searchCookie(item) {
 }
 
 //==============Main==============//
-// let myCoin = 100;
-// document.cookie = 'myCoin=' + myCoin;
-myCoin = searchCookie('myCoin');
-myCoinCounter();
-
 function myCoinCounter() {
     let myCoinNum = document.querySelector('.mycoin-num');
     myCoinNum.innerHTML = '×' +  myCoin;
 }
+
+myCoin = searchCookie('myCoin');
+if(myCoin == "") {myCoin = 0;}
+myCoinCounter();
+
+
 //==============ガチャ==============//
 
 //-----ガチャを回したとき-----//
