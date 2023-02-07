@@ -47,6 +47,8 @@ body {
   text-align: center;
   text-decoration: none;
   width: 100%;
+  position: absolute;
+  left: 0;
   max-width: 120px;
   margin-top: 20px;
   margin-left: 20px;
@@ -68,6 +70,16 @@ body {
 #menu .backbutton:active {
   top: 4px;
   box-shadow: 0 0 0 #C62828;
+}
+#menu #main {
+  display: flex;
+}
+#menu #main .select {
+  display: flex;
+}
+#menu #main .select .itemlist {
+  display: flex;
+  justify-content: center;
 }
 
 #gacha #gacha-top {
@@ -149,7 +161,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-#gacha #sbutton .summonbutton {
+#gacha #sbutton .gacha-btn {
   font-size: 30px;
   line-height: 40px;
   position: relative;
@@ -163,8 +175,8 @@ body {
   color: #fff;
   background-color: rgb(255, 79, 79);
 }
-#gacha #sbutton .summonbutton:before,
-#gacha #sbutton .summonbutton:after {
+#gacha #sbutton .gacha-btn:before,
+#gacha #sbutton .gacha-btn:after {
   position: absolute;
   top: 0;
   width: 0;
@@ -174,11 +186,11 @@ body {
   border-right: 20px solid transparent;
   border-left: 20px solid transparent;
 }
-#gacha #sbutton .summonbutton:before {
+#gacha #sbutton .gacha-btn:before {
   right: 100%;
   border-right-color: rgb(255, 79, 79);
 }
-#gacha #sbutton .summonbutton:after {
+#gacha #sbutton .gacha-btn:after {
   left: 100%;
   border-right-color: rgb(255, 79, 79);
   transform: rotate(180deg);
