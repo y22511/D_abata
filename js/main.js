@@ -1,7 +1,8 @@
 //-------------skin--------------//
-//あたま//
-headSkin=アイマスク.PNG;
+const SKIN_NUM = 7;  //スキンの数
 
+//あたま//
+const HEAD_SKIN = ["eyemask.PNG", "christmas.PNG", "odairisama.PNG", "ohinasama.PNG", "pumpkin.PNG", "rabbit.PNG", "wizard.PNG"];
 
 
 
