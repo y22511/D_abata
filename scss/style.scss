@@ -107,14 +107,14 @@ body {
         .avatar {
             margin-top: 100px;
             background: #ffffffa1;
-  border-radius: 40px 40px 40px 40px;
-  border: outset 5px;
+            border-radius: 40px 40px 40px 40px;
+            border: outset 5px;
             height: 600px;
         }
 
         .select {
             background: #797979;
-            padding-top: 10px;
+            padding-top: 20px;
             margin-top: 100px;
 
             .top_content {
@@ -129,8 +129,7 @@ body {
                 padding-left:0;
                 list-style:none;
                 display: grid;
-                margin-left: 30px;
-                margin-right: 30px;
+                margin: 30px;
                 grid-template-columns: 200px 200px 200px;
                 grid-template-rows: 150px 150px 150px;
                 gap: 30px;
