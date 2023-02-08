@@ -2,10 +2,10 @@
 const SKIN_NUM = 7;  //スキンの数
 
 //あたま//
-const HEAD_SKIN = ["christmas_head.PNG", "kanhuku_head.PNG", "odairisama_head.PNG", "ohinasama_head.PNG", "pajama_head.PNG", "pumpkin_head.PNG", "rabbit_head.PNG", "wizard_head.PNG"]; //あたま
-const BODY_SKIN = ["christmas_body.PNG", "kanhuku_body.PNG", "odairisama_body.PNG", "ohinasama_body.PNG", "pajama_body.PNG", "pumpkin_body.PNG", "rabbit_body.PNG", "wizard_body.PNG"]; //からだ
-const HEAD_SKIN_ITEM = ["christmas_head_item.PNG", "kanhuku_head_item.PNG", "odairisama_head_item.PNG", "ohinasama_head_item.PNG", "pajama_head_item.PNG", "pumpkin_head_item.PNG", "rabbit_head_item.PNG", "wizard_head_item.PNG"]; //あたま(item)
-const BODY_SKIN_ITEM = ["christmas_body_item.PNG", "kanhuku_body_item.PNG", "odairisama_body_item.PNG", "ohinasama_body_item.PNG", "pajama_body_item.PNG", "pumpkin_body_item.PNG", "rabbit_body_item.PNG", "wizard_body_item.PNG"]; //からだ(item)
+const HEAD_SKIN = ["normal_head.PNG", "christmas_head.PNG", "kanhuku_head.PNG", "odairisama_head.PNG", "ohinasama_head.PNG", "pajama_head.PNG", "pumpkin_head.PNG", "rabbit_head.PNG", "wizard_head.PNG"]; //あたま
+const BODY_SKIN = ["normal_body.PNG", "christmas_body.PNG", "kanhuku_body.PNG", "odairisama_body.PNG", "ohinasama_body.PNG", "pajama_body.PNG", "pumpkin_body.PNG", "rabbit_body.PNG", "wizard_body.PNG"]; //からだ
+const HEAD_SKIN_ITEM = ["", "christmas_head_item.PNG", "kanhuku_head_item.PNG", "odairisama_head_item.PNG", "ohinasama_head_item.PNG", "pajama_head_item.PNG", "pumpkin_head_item.PNG", "rabbit_head_item.PNG", "wizard_head_item.PNG"]; //あたま(item)
+const BODY_SKIN_ITEM = ["", "christmas_body_item.PNG", "kanhuku_body_item.PNG", "odairisama_body_item.PNG", "ohinasama_body_item.PNG", "pajama_body_item.PNG", "pumpkin_body_item.PNG", "rabbit_body_item.PNG", "wizard_body_item.PNG"]; //からだ(item)
 
 
 
