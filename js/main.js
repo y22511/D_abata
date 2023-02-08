@@ -1,3 +1,11 @@
+//-------------skin--------------//
+const SKIN_NUM = 7;  //スキンの数
+
+//あたま//
+const HEAD_SKIN = ["eyemask.PNG", "christmas.PNG", "odairisama.PNG", "ohinasama.PNG", "pumpkin.PNG", "rabbit.PNG", "wizard.PNG"];
+
+
+
 //-------------Cookie--------------//
 function nameCookie() {
     let name=[2];
@@ -33,15 +41,16 @@ function searchCookie(item) {
 }
 
 //==============Main==============//
-// let myCoin = 100;
-// document.cookie = 'myCoin=' + myCoin;
-myCoin = searchCookie('myCoin');
-myCoinCounter();
-
 function myCoinCounter() {
     let myCoinNum = document.querySelector('.mycoin-num');
     myCoinNum.innerHTML = '×' +  myCoin;
 }
+
+myCoin = searchCookie('myCoin');
+if(myCoin == "") {myCoin = 0;}
+myCoinCounter();
+
+
 //==============ガチャ==============//
 
 //-----ガチャを回したとき-----//
@@ -54,6 +63,7 @@ function pullGacha(){
     document.cookie = 'myCoin =' + myCoin;
     myCoinCounter();
 }
+//ガチャボックスクリック
 document.querySelector('.gacha-main').addEventListener('click', function(){
     myCoin += 5;
     myCoinCounter();
