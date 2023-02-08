@@ -81,28 +81,30 @@ function pullGacha(){
 }
 function getSkin(){
     const HEAD_OR_BODY = [HEAD_SKIN_ITEM, BODY_SKIN_ITEM]; 
-    console.log(mySkinNum);
-    while (true) {
+    let valueImg = "";
+    while (valueImg == ""){
         let randomNum1 = Math.floor( Math.random() * 10) % 2;
         let randomNum2 = Math.floor( Math.random() * SKIN_NUM / 2 - 1 ) + 1; // 1 ~ 8
-        let valueImg = HEAD_OR_BODY[randomNum1][randomNum2];
+        valueImg = HEAD_OR_BODY[randomNum1][randomNum2];
         if (searchValueCookie(valueImg) == "") {
             document.cookie = 'mySkin' + mySkinNum + '=' + valueImg;
             mySkinNum += 1;
-            if(SKIN_NUM < mySkinNum) { mySkinNum = 0; };
+            if(SKIN_NUM - 2 < mySkinNum) { mySkinNum = 0; };
             console.log("新しいスキンをゲットしました！");
-            wait = false;
-            break;
+        } else {
+            console.log("持ってるスキンをゲットしました！");
         }
     }
+    wait = false;
 }
 
 
 document.querySelector('.gacha-btn').addEventListener('click', function(){
+    console.log(wait);
     if (wait == true) { return; };
     wait = true;
     pullGacha();
-    if (myCoin <= 0) { return; };
+    if (myCoin <= 0) { wait = false; return; };
     getSkin();
 })
 
