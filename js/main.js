@@ -1,3 +1,10 @@
+//-------------skin--------------//
+//あたま//
+headSkin=アイマスク.PNG;
+
+
+
+
 //-------------Cookie--------------//
 function nameCookie() {
     let name=[2];
@@ -55,6 +62,7 @@ function pullGacha(){
     document.cookie = 'myCoin =' + myCoin;
     myCoinCounter();
 }
+//ガチャボックスクリック
 document.querySelector('.gacha-main').addEventListener('click', function(){
     myCoin += 5;
     myCoinCounter();
