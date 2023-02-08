@@ -63,7 +63,7 @@ function myCoinCounter() {
     myCoinNum.innerHTML = '×' +  myCoin;
 }
 
-myCoin = searchNameCookie('myCoin');
+let myCoin = Number(searchNameCookie('myCoin'));
 if(myCoin == "") { myCoin = 0; };
 myCoinCounter();
 
@@ -74,12 +74,14 @@ let wait = false;
 //-----ガチャを回したとき-----//
 function pullGacha(){
     if (myCoin <= 0) {console.log("コインが足りないよ"); return;}
+    console.log(myCoin);
     myCoin -= 1;
     document.cookie = 'myCoin =' + myCoin;
     myCoinCounter();
 }
 function getSkin(){
     const HEAD_OR_BODY = [HEAD_SKIN_ITEM, BODY_SKIN_ITEM]; 
+    console.log(mySkinNum);
     while (true) {
         let randomNum1 = Math.floor( Math.random() * 10) % 2;
         let randomNum2 = Math.floor( Math.random() * SKIN_NUM / 2 - 1 ) + 1; // 1 ~ 8
