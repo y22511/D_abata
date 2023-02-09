@@ -62,15 +62,19 @@ function myCoinCounter() {
     let myCoinNum = document.querySelector('.mycoin-num');
     myCoinNum.innerHTML = '×' +  myCoin;
 }
-
+let wait = false;
 let myCoin = Number(searchNameCookie('myCoin'));
 if(myCoin == "") { myCoin = 0; };
 myCoinCounter();
 
-//==============ガチャ==============//
-
-let wait = false;
-
+//==============メニュー.html==============//
+window.onload = ()=> {
+    // パスの取得
+    let path = location.pathname
+    if (path == "/menu.html") {
+        myCoinCounter();
+    } 
+}
 //-----ガチャを回したとき-----//
 function pullGacha(){
     if (myCoin <= 0) {console.log("コインが足りないよ"); return;}
@@ -79,6 +83,7 @@ function pullGacha(){
     document.cookie = 'myCoin =' + myCoin;
     myCoinCounter();
 }
+
 function getSkin(){
     const HEAD_OR_BODY = [HEAD_SKIN_ITEM, BODY_SKIN_ITEM]; 
     let valueImg = "";
@@ -86,7 +91,7 @@ function getSkin(){
         let randomNum1 = Math.floor( Math.random() * 10) % 2;
         let randomNum2 = Math.floor( Math.random() * SKIN_NUM / 2 - 1 ) + 1; // 1 ~ 8
         valueImg = HEAD_OR_BODY[randomNum1][randomNum2];
-        if (searchValueCookie(valueImg) == "") {
+        if (searchValueCookie(valueImg) == "" && valueImg != "") {
             document.cookie = 'mySkin' + mySkinNum + '=' + valueImg;
             mySkinNum += 1;
             if(SKIN_NUM - 2 < mySkinNum) { mySkinNum = 0; };
@@ -99,18 +104,30 @@ function getSkin(){
 }
 
 
-document.querySelector('.gacha-btn').addEventListener('click', function(){
-    console.log(wait);
-    if (wait == true) { return; };
-    wait = true;
-    pullGacha();
-    if (myCoin <= 0) { wait = false; return; };
-    getSkin();
-})
+console.log(location.pathname);
+//==============ガチャ.html==============//
+window.onload = ()=> {
+    // パスの取得
+    let path = location.pathname;
+    if (path == "/gacha.html") {
+        
 
 
-//==============test==============//
-document.querySelector('.gacha-main').addEventListener('click', function(){
-    myCoin += 5;
-    myCoinCounter();
-})
+        document.querySelector('.gacha-btn').addEventListener('click', function(){
+            console.log(wait);
+            if (wait == true) { return; };
+            wait = true;
+            pullGacha();
+            if (myCoin <= 0) { wait = false; return; };
+            getSkin();
+        })
+
+
+        //==============test==============//
+        document.querySelector('.gacha-main').addEventListener('click', function(){
+            myCoin += 5;
+            myCoinCounter();
+        })
+    } 
+}
+

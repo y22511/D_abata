@@ -17,7 +17,6 @@ body {
         align-items: center;
         justify-content: center;
         display: flex;
-
         .top-title {
             color: #F44B4B;
             background: #FFB5DD;
@@ -25,79 +24,91 @@ body {
             font-size: 4em;
             border-radius: 64px / 40px;
             padding: 32px 24px;
-        }
-
-        //top-title
+        }//top-title
         .top-img1 {
             transform: rotate(24deg) translateX(-64px) translateY(16px);
             width: auto;
             max-height: 184%;
             display: block;
-        }
-
-        //top-img1
-    }
-
-    //#top-title
+        }//top-img1  
+    }//#top-title
     #top-menu {
         li {
             font-size: 2em;
             background-color: rgba(255, 92, 0, 0.3);
             opacity: 0.3;
             width: auto;
-        }
-
-        //li
-    }
-
-    //top-menu
+        }//li    
+    }//top-menu   
 }
 
 //==========メニュー画面==========//
 #menu {
 
-    //backbutton//
-    .backbutton {
-        background-color: #ec8dd8;
-        border-radius: 8px;
-        box-shadow: 0 4px 0 #69004f;
-        color: #fff;
-        display: block;
-        padding: 8px;
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        max-width: 120px;
-        margin-top: 20px;
-        margin-left: 20px;
+    #menu-top {
+        display: flex;
+
+        //backbutton//
+        .backbutton {
+            background-color: #ec8dd8;
+            border-radius: 8px;
+            box-shadow: 0 4px 0 #69004f;
+            color: #fff;
+            display: block;
+            padding: 8px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            max-width: 120px;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        .backbutton::after {
+            content: '';
+            display: inline-block;
+            border-style: solid;
+            border-width: 8px 0 8px 8px;
+            border-color: transparent transparent transparent #fff;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+        //backbutton::after
+        .backbutton:active {
+            top: 4px;
+            box-shadow: 0 0 0 #C62828;
+        }
+        //backbutton:active
+
+        //mycoin//
+        .mycoin {
+            display: flex;
+            text-align: left;
+            margin-top: 20px;
+            margin-right: 20px;
+            background-color: #fff;
+            border: 2px solid #000000;
+            border-radius: 10px;
+            width: 150px;
+            height: 35px;
+            position: absolute;
+            right: 0;
+            .coin {
+                width: 40px;
+                height: auto;
+            }//coin
+            p {
+                margin: 10px;
+            }//p
+        }//mycoin
     }
-
-    .backbutton::after {
-        content: '';
-        display: inline-block;
-        border-style: solid;
-        border-width: 8px 0 8px 8px;
-        border-color: transparent transparent transparent #fff;
-        display: inline-block;
-        width: 0;
-        height: 0;
-        position: absolute;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
-    }
-
-    //backbutton::after
-    .backbutton:active {
-        top: 4px;
-        box-shadow: 0 0 0 #C62828;
-    }
-
-    //backbutton:active
-
     #menu-main {
         display: flex;
         justify-content: space-around;
@@ -218,24 +229,16 @@ body {
             height: 35px;
             position: absolute;
             right: 0;
-
             .coin {
                 width: 40px;
                 height: auto;
-            }
-
-            //coin
+            }//coin
             p {
                 margin: 10px;
-            }
+            }//p
+        }//mycoin
+    }//#gacha-top
 
-            //p
-        }
-
-        //mycoin
-    }
-
-    //#gacha-top
     h1 {
         margin-top: 50px;
         text-align: center;
