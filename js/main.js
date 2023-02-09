@@ -56,26 +56,13 @@ let mySkinNum = searchNameCookie('mySkinNum');
 if (mySkinNum == "") { mySkinNum = 0 };
 
 
-
-//==============Main==============//
+//==============Coin==============//
 function myCoinCounter() {
     let myCoinNum = document.querySelector('.mycoin-num');
     myCoinNum.innerHTML = '×' +  myCoin;
 }
-let wait = false;
-let myCoin = Number(searchNameCookie('myCoin'));
-if(myCoin == "") { myCoin = 0; };
-myCoinCounter();
 
-//==============メニュー.html==============//
-window.onload = ()=> {
-    // パスの取得
-    let path = location.pathname
-    if (path == "/menu.html") {
-        myCoinCounter();
-    } 
-}
-//-----ガチャを回したとき-----//
+//==============Gacha==============//
 function pullGacha(){
     if (myCoin <= 0) {console.log("コインが足りないよ"); return;}
     console.log(myCoin);
@@ -103,25 +90,39 @@ function getSkin(){
     wait = false;
 }
 
+function movieGacha() {
+    let gachaMain = document.querySelector('gacha-main');
+}
 
-console.log(location.pathname);
+//==============Main==============//
+
+let wait = false;
+let myCoin = Number(searchNameCookie('myCoin'));
+if(myCoin == "") { myCoin = 0; };
+myCoinCounter();
+
+//==============メニュー.html==============//
+window.onload = ()=> {
+    // パスの取得
+    let path = location.pathname
+    if (path == "/menu.html") {
+    } 
+}
+
+
 //==============ガチャ.html==============//
 window.onload = ()=> {
     // パスの取得
     let path = location.pathname;
     if (path == "/gacha.html") {
-        
-
 
         document.querySelector('.gacha-btn').addEventListener('click', function(){
-            console.log(wait);
             if (wait == true) { return; };
             wait = true;
             pullGacha();
             if (myCoin <= 0) { wait = false; return; };
             getSkin();
         })
-
 
         //==============test==============//
         document.querySelector('.gacha-main').addEventListener('click', function(){
