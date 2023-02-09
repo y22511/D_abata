@@ -254,17 +254,19 @@ body {
             0px 2px 1px #ff0000,
             -2px 0px 1px #ff0000,
             0px -2px 1px #ff0000;
-    }
+    }//h1
 
-    //h1
     .gacha-main {
         display: block;
         margin: auto;
         width: 20%;
         height: auto;
+    }//gacha-main
+    .gacha-capsule {
+        width: 20%;
+        height: auto;
     }
-
-    //gacha-main
+    
     //-----sbutton-----//
     #sbutton {
         margin: 20px;

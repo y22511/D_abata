@@ -218,6 +218,10 @@ body {
   width: 20%;
   height: auto;
 }
+#gacha .gacha-capsule {
+  width: 20%;
+  height: auto;
+}
 #gacha #sbutton {
   margin: 20px;
   display: flex;
