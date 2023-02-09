@@ -1,3 +1,11 @@
+//==============Various==============//
+function FuncSetAttribute(origin, obj) {
+    for (let i of Object.entries(obj)) {
+        for (let j = 0; j < i.length - 1; j++) {
+            origin.setAttribute(i[j]);
+        }
+    }
+}
 //==============Cookie==============//
 function nameCookie() {
     let name=[2];
@@ -45,6 +53,7 @@ function searchValueCookie(item) {
 
 
 //==============skin==============//
+
 const SKIN_NUM = 18;  //スキンの種類
 
 const HEAD_SKIN = ["normal_head.PNG", "christmas_head.PNG", "kanhuku_head.PNG", "odairisama_head.PNG", "ohinasama_head.PNG", "pajama_head.PNG", "pumpkin_head.PNG", "rabbit_head.PNG", "wizard_head.PNG"]; //あたま
@@ -57,12 +66,14 @@ if (mySkinNum == "") { mySkinNum = 0 };
 
 
 //==============Coin==============//
+
 function myCoinCounter() {
     let myCoinNum = document.querySelector('.mycoin-num');
     myCoinNum.innerHTML = '×' +  myCoin;
 }
 
 //==============Gacha==============//
+
 function pullGacha(){
     if (myCoin <= 0) {console.log("コインが足りないよ"); return;}
     console.log(myCoin);
@@ -90,8 +101,24 @@ function getSkin(){
     wait = false;
 }
 
-function movieGacha() {
-    let gachaMain = document.querySelector('gacha-main');
+
+function gachaMovie() {
+    let gachaMain = document.querySelector('.gacha-main');
+    let capsuleMovie = document.createElement('img');
+    
+    let capsule = {
+        class: 'gacha-capsule',
+        src: 'img/gacha_capsule.png',
+        alt: 'カプセル',
+    }
+    
+    FuncSetAttribute(capsule, capsuleMovie);
+
+    gachaMain.after(capsuleMovie);
+    setTimeout(function(){
+        capsuleMovie.remove();
+    }, 5000);
+    
 }
 
 //==============Main==============//
@@ -122,6 +149,7 @@ window.onload = ()=> {
             pullGacha();
             if (myCoin <= 0) { wait = false; return; };
             getSkin();
+            gachaMovie();
         })
 
         //==============test==============//
