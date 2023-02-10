@@ -1,9 +1,7 @@
 //==============Various==============//
 function FuncSetAttribute(origin, obj) {
     for (let i of Object.entries(obj)) {
-        for (let j = 0; j < i.length - 1; j++) {
-            origin.setAttribute(i[j]);
-        }
+        origin.setAttribute(i[0], i[1]);
     }
 }
 //==============Cookie==============//
@@ -76,7 +74,6 @@ function myCoinCounter() {
 
 function pullGacha(){
     if (myCoin <= 0) {console.log("コインが足りないよ"); return;}
-    console.log(myCoin);
     myCoin -= 1;
     document.cookie = 'myCoin =' + myCoin;
     myCoinCounter();
@@ -111,13 +108,16 @@ function gachaMovie() {
         src: 'img/gacha_capsule.png',
         alt: 'カプセル',
     }
+    for (let j of Object.entries(capsule)) {
+        console.log(j[0]);
+        capsuleMovie.setAttribute(j[0], j[1]);
+    }
+    FuncSetAttribute(capsuleMovie, capsule);
     
-    FuncSetAttribute(capsule, capsuleMovie);
-
     gachaMain.after(capsuleMovie);
-    setTimeout(function(){
-        capsuleMovie.remove();
-    }, 5000);
+    // setTimeout(function(){
+    //     capsuleMovie.remove();
+    // }, 5000);
     
 }
 

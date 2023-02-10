@@ -216,15 +216,18 @@ body {
   color: #fff;
   text-shadow: 2px 2px 1px #ff0000, -2px 2px 1px #ff0000, 2px -2px 1px #ff0000, -2px -2px 1px #ff0000, 2px 0px 1px #ff0000, 0px 2px 1px #ff0000, -2px 0px 1px #ff0000, 0px -2px 1px #ff0000;
 }
-#gacha .gacha-main {
-  display: block;
-  margin: auto;
+#gacha .gacha-machine {
   width: 20%;
   height: auto;
+  margin: 0 auto;
+  display: block;
 }
 #gacha .gacha-capsule {
-  width: 20%;
+  width: 8%;
   height: auto;
+  top: 80%;
+  left: 50%;
+  position: absolute;
 }
 #gacha #sbutton {
   margin: 20px;
