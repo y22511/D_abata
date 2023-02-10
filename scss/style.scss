@@ -260,19 +260,27 @@ body {
             0px -2px 1px #ff0000;
     }//h1
 
-    .gacha-machine {
-        width: 20%;
-        height: auto;
-        margin: 0 auto;
-        display: block;
-    }//gacha-main
-    .gacha-capsule {
-        width: 8%;
-        height: auto;
-        top: 80%;
-        left: 50%;
-        position: absolute;
+    //gacha-main//
+    #gacha-main {
+        text-align: center;
+        position: relative;
+        .gacha-machine {
+            width: 16%;
+            height: auto;
+            position: relative;
+        }//#gacha-main
+        .gacha-capsule {
+            width: 16%;
+            height: auto;
+            text-align: center;
+            left: 50%;
+            bottom: 0px;
+            position: absolute;
+            transform: translate(-50%, -100%);
+        }//gacha-capsule
+        
     }
+    
     
     //-----sbutton-----//
     #sbutton {

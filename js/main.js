@@ -100,7 +100,7 @@ function getSkin(){
 
 
 function gachaMovie() {
-    let gachaMain = document.querySelector('.gacha-main');
+    let gachaMovie = document.querySelector('.gacha-movie');
     let capsuleMovie = document.createElement('img');
     
     let capsule = {
@@ -108,16 +108,13 @@ function gachaMovie() {
         src: 'img/gacha_capsule.png',
         alt: 'カプセル',
     }
-    for (let j of Object.entries(capsule)) {
-        console.log(j[0]);
-        capsuleMovie.setAttribute(j[0], j[1]);
-    }
+
     FuncSetAttribute(capsuleMovie, capsule);
     
-    gachaMain.after(capsuleMovie);
-    // setTimeout(function(){
-    //     capsuleMovie.remove();
-    // }, 5000);
+    gachaMovie.insertBefore(capsuleMovie, gachaMovie.firstChild);
+    setTimeout(function(){
+        capsuleMovie.remove();
+    }, 50000);
     
 }
 
@@ -153,7 +150,7 @@ window.onload = ()=> {
         })
 
         //==============test==============//
-        document.querySelector('.gacha-main').addEventListener('click', function(){
+        document.querySelector('.gacha-machine').addEventListener('click', function(){
             myCoin += 5;
             myCoinCounter();
         })
