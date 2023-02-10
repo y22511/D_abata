@@ -1,9 +1,7 @@
 //==============Various==============//
 function FuncSetAttribute(origin, obj) {
     for (let i of Object.entries(obj)) {
-        for (let j = 0; j < i.length - 1; j++) {
-            origin.setAttribute(i[j]);
-        }
+        origin.setAttribute(i[0], i[1]);
     }
 }
 //==============Cookie==============//
@@ -76,7 +74,6 @@ function myCoinCounter() {
 
 function pullGacha(){
     if (myCoin <= 0) {console.log("コインが足りないよ"); return;}
-    console.log(myCoin);
     myCoin -= 1;
     document.cookie = 'myCoin =' + myCoin;
     myCoinCounter();
@@ -103,7 +100,7 @@ function getSkin(){
 
 
 function gachaMovie() {
-    let gachaMain = document.querySelector('.gacha-main');
+    let gachaMovie = document.querySelector('.gacha-movie');
     let capsuleMovie = document.createElement('img');
     
     let capsule = {
@@ -111,13 +108,13 @@ function gachaMovie() {
         src: 'img/gacha_capsule.png',
         alt: 'カプセル',
     }
-    
-    FuncSetAttribute(capsule, capsuleMovie);
 
-    gachaMain.after(capsuleMovie);
+    FuncSetAttribute(capsuleMovie, capsule);
+    
+    gachaMovie.insertBefore(capsuleMovie, gachaMovie.firstChild);
     setTimeout(function(){
         capsuleMovie.remove();
-    }, 5000);
+    }, 50000);
     
 }
 
@@ -153,7 +150,7 @@ window.onload = ()=> {
         })
 
         //==============test==============//
-        document.querySelector('.gacha-main').addEventListener('click', function(){
+        document.querySelector('.gacha-machine').addEventListener('click', function(){
             myCoin += 5;
             myCoinCounter();
         })
