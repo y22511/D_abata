@@ -13,8 +13,8 @@ function handleKeyup(e) {
 // canvas要素の取得
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-const CANVAS_WIDTH = 1920;
-const CANVAS_HEIGHT = 880;
+const CANVAS_WIDTH = 1900;
+const CANVAS_HEIGHT = 860;
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 
@@ -34,22 +34,25 @@ let isGameOver = false;
 // ゲームクリアか否かのフラグ値
 let isGameClear = false;
 
-//ゴール位置(ナミの位置)
-const GOAL_X = 850;
-const GOAL_Y = 320;
+//ゴール位置
+const GOAL_X = 1400;
+const GOAL_Y = 220;
 
 // ブロック要素の定義
 let blocks = [
-  { x: 0, y: 600, w: 800, h: 40 },
-  { x: 800, y: 500, w: 250, h: 40 },
-  { x: 1250, y: 400, w: 310, h: 40 },
+  { x: 0, y: 600, w: 400, h: 40 },
+  { x: 400, y: 500, w: 400, h: 40 },
+  { x: 800, y: 400, w: 200, h: 40 },
+  { x: 1200, y: 400, w: 70, h: 40 },
+  { x: 1250, y: 300, w: 300, h: 40 },
 ];
 
 // 敵の情報
 let enemies = [
   { x: 550, y: 0, isJump: true, vy: 0 },
-  { x: 750, y: 0, isJump: true, vy: 0 },
-  { x: 300, y: 180, isJump: true, vy: 0 },
+  { x: 650, y: 20, isJump: true, vy: 0 },
+  { x: 850, y: 50, isJump: true, vy: 0 },
+  { x: 1000, y: 50, isJump: true, vy: 0 },
 ];
 const ENEMY_SPEED = 1;
 
@@ -98,6 +101,7 @@ function update() {
     vy = vy + 0.5;
     if (y > CANVAS_HEIGHT) { //キャラが更に下に落ちてきた時
       alert("GAME OVER");
+      
       isGameOver = false;
       isJump = false;
       updatedX = 0;
@@ -161,7 +165,7 @@ function update() {
 
   // playrの画像を表示
   let image = new Image();
-  image.src = "img/normal.PNG";
+  image.src = "img/normalhanten.PNG";
   ctx.drawImage(image, x, y, IMG_SIZE, IMG_SIZE);
 
   // 敵の画像を表示
