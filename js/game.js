@@ -96,6 +96,7 @@ function update() {
     updatedX = 0;
     updatedY = 0;
     vy = 0;
+    location = menu.html;
   } else if (isGameOver){
     updatedY = y + vy;
     vy = vy + 0.5;
