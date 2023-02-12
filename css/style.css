@@ -216,15 +216,23 @@ body {
   color: #fff;
   text-shadow: 2px 2px 1px #ff0000, -2px 2px 1px #ff0000, 2px -2px 1px #ff0000, -2px -2px 1px #ff0000, 2px 0px 1px #ff0000, 0px 2px 1px #ff0000, -2px 0px 1px #ff0000, 0px -2px 1px #ff0000;
 }
-#gacha .gacha-main {
-  display: block;
-  margin: auto;
-  width: 20%;
-  height: auto;
+#gacha #gacha-main {
+  text-align: center;
+  position: relative;
 }
-#gacha .gacha-capsule {
-  width: 20%;
+#gacha #gacha-main .gacha-machine {
+  width: 16%;
   height: auto;
+  position: relative;
+}
+#gacha #gacha-main .gacha-capsule {
+  width: 16%;
+  height: auto;
+  text-align: center;
+  left: 50%;
+  bottom: 0px;
+  position: absolute;
+  transform: translate(-50%, -100%);
 }
 #gacha #sbutton {
   margin: 20px;
