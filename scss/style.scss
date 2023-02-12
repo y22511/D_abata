@@ -2,6 +2,7 @@ body {
     background: url(/img/body_background.png) no-repeat center center;
     background-attachment: fixed;
     background-size: cover;
+    overflow: hidden;
 }
 
 
@@ -211,15 +212,12 @@ body {
             top: 50%;
             right: 20px;
             transform: translateY(-50%);
-        }
-
-        //backbutton::after
+        }//backbutton::after
         .backbutton:active {
             top: 4px;
             box-shadow: 0 0 0 #C62828;
-        }
+        }//backbutton:active
 
-        //backbutton:active
         //mycoin//
         .mycoin {
             display: flex;
@@ -270,16 +268,37 @@ body {
             position: relative;
         }//#gacha-main
         .gacha-capsule {
-            width: 16%;
+            width: 6%;
             height: auto;
             text-align: center;
             left: 50%;
             bottom: 0px;
+            z-index: 100;
             position: absolute;
-            transform: translate(-50%, -100%);
+            animation: capsuleAnime forwards 2s ease normal;
         }//gacha-capsule
-        
-    }
+        .gacha-flash {
+            border-radius: 50%;
+            width: 6%;
+            height: auto;
+            text-align: center;
+            left: 50%;
+            bottom: 0px;
+            z-index: 200;
+            position: absolute;
+            animation: flashAnime forwards 2s ease normal;
+        }
+        .gacha-skin {
+            width: 32%;
+            height: auto;
+            text-align: center;
+            left: 50%;
+            bottom: 0px;
+            z-index: 300;
+            position: absolute;
+            animation: skinAnime forwards 2s ease normal;
+        }
+    }//#gacha-main
     
     
     //-----sbutton-----//
@@ -327,13 +346,9 @@ body {
             border-right-color: rgb(255, 79, 79);
             transform: rotate(180deg);
         }
-    }
+    }//#sbutton
 
-    //#sbutton
-
-}
-
-//gacha
+}//gacha
 
 //==========ゲーム画面==========//
 #game {
@@ -349,5 +364,34 @@ body {
             margin: 0 auto;
         }
             
+    }
+}
+
+
+
+
+//==================アニメーション================//
+@keyframes capsuleAnime {
+    0% {
+        transform: translate(-50%, -80%) rotate(0);
+    }
+    100% {
+        transform: translate(-50%, 0) rotate(720deg) scale(4, 4);
+    }
+}
+@keyframes flashAnime {
+    0% {
+        transform: translate(-50%, 0);
+    }
+    100% {
+        transform: translate(-100%, -200%) scale(50, 50);
+    }
+}
+@keyframes skinAnime {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        transform: translate(-50%, 20%) rotatey(720deg);
     }
 }
