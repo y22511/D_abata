@@ -1,5 +1,6 @@
 //==============Various==============//
 function FuncSetAttribute(origin, obj) {
+    console.log(obj);
     for (let i of Object.entries(obj)) {
         for (let j = 0; j < i.length - 1; j++) {
             origin.setAttribute(i[j]);
@@ -111,8 +112,7 @@ function gachaMovie() {
         src: 'img/gacha_capsule.png',
         alt: 'カプセル',
     }
-    
-    FuncSetAttribute(capsule, capsuleMovie);
+    FuncSetAttribute(capsuleMovie, capsule);
 
     gachaMain.after(capsuleMovie);
     setTimeout(function(){
