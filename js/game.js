@@ -14,36 +14,33 @@ function handleKeyup(e) {
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const CANVAS_WIDTH = 1900;
-const CANVAS_HEIGHT = 860;
+const CANVAS_HEIGHT = 920;
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 
 //キャラの設定
-const IMG_SIZE = 80;
+const IMG_SIZE = 100;
 const CHARA_SPEED = 4;
 // キャラの配置初期値
 let x = 0;
 let y = 300;
 // 上下方向の速度
-let vy = 0;  //正のとき：落下中 負のとき:上昇中
-// ジャンプしたか否かのフラグ値
-let isJump = false;
+let vy = 0;
 
-// ゲームオーバーか否かのフラグ値
+let isJump = false;
 let isGameOver = false;
-// ゲームクリアか否かのフラグ値
 let isGameClear = false;
 
 //ゴール位置
 const GOAL_X = 1400;
-const GOAL_Y = 220;
+const GOAL_Y = 200;
 
 // ブロック要素の定義
 let blocks = [
   { x: 0, y: 600, w: 400, h: 40 },
   { x: 400, y: 500, w: 400, h: 40 },
   { x: 800, y: 400, w: 200, h: 40 },
-  { x: 1200, y: 400, w: 70, h: 40 },
+  { x: 1160, y: 400, w: 50, h: 40 },
   { x: 1250, y: 300, w: 300, h: 40 },
 ];
 
@@ -90,13 +87,13 @@ function update() {
   let updatedX = x;
   let updatedY = y;
   if (isGameClear) {
-    alert("ゲームクリア");
+    alert("5コインゲット!");
     isGameClear = false;
     isJump = false;
     updatedX = 0;
     updatedY = 0;
     vy = 0;
-    location = menu.html;
+    history.back();
   } else if (isGameOver){
     updatedY = y + vy;
     vy = vy + 0.5;
@@ -171,7 +168,7 @@ function update() {
 
   // 敵の画像を表示
   let enemyImage = new Image();
-  enemyImage.src = "img/normal.PNG";
+  enemyImage.src = "img/mouse.png";
   for (const enemy of enemies) {
     ctx.drawImage(enemyImage, enemy.x, enemy.y, IMG_SIZE, IMG_SIZE);
   }
@@ -217,5 +214,5 @@ function isAreaOverlap(cx, cy, cw, ch, ex, ey, ew, eh) {
   if (cx + cw < ex) return false;  //キャラの右と敵の左
   if (ey + eh < cy) return false;  //キャラの上と敵の下
   if (cy + ch < ey) return false;  //キャラの下と敵の上
-  return true;  // ここまで到達する場合には、どこかしらで重なる
+  return true;
 }

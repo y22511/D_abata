@@ -352,18 +352,14 @@ body {
 
 //==========ゲーム画面==========//
 #game {
+    background: url(/img/game_background.jpg) no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
     #game #game {
         padding: 0;
         margin: 0;
-
-        .canvas {
-            background: url(/img/22823124.jpg) no-repeat center center;
-            background-attachment: fixed;
-            background-size: cover;
-            display: block;
-            margin: 0 auto;
-        }
-            
+        display: block;
+        margin: 0 auto;  
     }
 }
 
