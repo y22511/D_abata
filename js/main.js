@@ -56,11 +56,13 @@ const SKIN_NUM = 18;  //スキンの種類
 
 const HEAD_SKIN = ["normal_head.PNG", "christmas_head.PNG", "kanhuku_head.PNG", "odairisama_head.PNG", "ohinasama_head.PNG", "pajama_head.PNG", "pumpkin_head.PNG", "rabbit_head.PNG", "wizard_head.PNG"]; //あたま
 const BODY_SKIN = ["normal_body.PNG", "christmas_body.PNG", "kanhuku_body.PNG", "odairisama_body.PNG", "ohinasama_body.PNG", "pajama_body.PNG", "pumpkin_body.PNG", "rabbit_body.PNG", "wizard_body.PNG"]; //からだ
-const HEAD_SKIN_ITEM = ["", "christmas_head_item.PNG", "kanhuku_head_item.PNG", "odairisama_head_item.PNG", "ohinasama_head_item.PNG", "pajama_head_item.PNG", "pumpkin_head_item.PNG", "rabbit_head_item.PNG", "wizard_head_item.PNG"]; //あたま(item)
-const BODY_SKIN_ITEM = ["", "christmas_body_item.PNG", "kanhuku_body_item.PNG", "odairisama_body_item.PNG", "ohinasama_body_item.PNG", "pajama_body_item.PNG", "pumpkin_body_item.PNG", "rabbit_body_item.PNG", "wizard_body_item.PNG"]; //からだ(item)
+const HEAD_SKIN_ITEM = ["", "head-item/christmas_head_item.PNG", "head-item/kanhuku_head_item.PNG", "head-item/odairisama_head_item.PNG", "head-item/ohinasama_head_item.PNG", "head-item/pajama_head_item.PNG", "head-item/pumpkin_head_item.PNG", "head-item/rabbit_head_item.PNG", "head-item/wizard_head_item.PNG"]; //あたま(item)
+const BODY_SKIN_ITEM = ["", "body-item/christmas_body_item.PNG", "body-item/kanhuku_body_item.PNG", "body-item/odairisama_body_item.PNG", "body-item/ohinasama_body_item.PNG", "body-item/pajama_body_item.PNG", "body-item/pumpkin_body_item.PNG", "body-item/rabbit_body_item.PNG", "body-item/wizard_body_item.PNG"]; //からだ(item)
 
-let mySkinNum = searchNameCookie('mySkinNum');
+
+let mySkinNum = Number(searchNameCookie('mySkinNum'));
 if (mySkinNum == "") { mySkinNum = 0 };
+let valueImg = "";
 
 
 //==============Coin==============//
@@ -81,7 +83,6 @@ function pullGacha(){
 
 function getSkin(){
     const HEAD_OR_BODY = [HEAD_SKIN_ITEM, BODY_SKIN_ITEM]; 
-    let valueImg = "";
     while (valueImg == ""){
         let randomNum1 = Math.floor( Math.random() * 10) % 2;
         let randomNum2 = Math.floor( Math.random() * SKIN_NUM / 2 - 1 ) + 1; // 1 ~ 8
@@ -89,6 +90,7 @@ function getSkin(){
         if (searchValueCookie(valueImg) == "" && valueImg != "") {
             document.cookie = 'mySkin' + mySkinNum + '=' + valueImg;
             mySkinNum += 1;
+            document.cookie = 'mySkinNum=' + mySkinNum;
             if(SKIN_NUM - 2 < mySkinNum) { mySkinNum = 0; };
             console.log("新しいスキンをゲットしました！");
         } else {
@@ -100,25 +102,42 @@ function getSkin(){
 
 
 function gachaMovie() {
-    let gachaMain = document.querySelector('.gacha-main');
-    let capsuleMovie = document.createElement('img');
+    wait = true;
+    let gachaMain = document.querySelector('.gacha-machine');
     
+    //カプセルmovie
+    let capsuleMovie = document.createElement('img');
     let capsule = {
         class: 'gacha-capsule',
         src: 'img/gacha_capsule.png',
         alt: 'カプセル',
     }
-    for (let j of Object.entries(capsule)) {
-        console.log(j[0]);
-        capsuleMovie.setAttribute(j[0], j[1]);
-    }
     FuncSetAttribute(capsuleMovie, capsule);
-    
     gachaMain.after(capsuleMovie);
-    // setTimeout(function(){
-    //     capsuleMovie.remove();
-    // }, 5000);
-    
+
+    //フラッシュmovie
+    let flashMovie = document.createElement('img');
+    let flash = {
+        class: 'gacha-flash',
+        src: 'img/gacha_flash.png',
+        alt: 'フラッシュ',
+    }
+    FuncSetAttribute(flashMovie, flash);
+    setTimeout(function(){
+        gachaMain.after(flashMovie);
+    }, 3000);
+
+    //スキンmovie
+    let skinMovie = document.createElement('img');
+    let skin = {
+        class: 'gacha-skin',
+        src: 'img/' + valueImg,
+        alt: 'スキン',
+    }
+    FuncSetAttribute(skinMovie, skin);
+    setTimeout(function(){
+        gachaMain.after(skinMovie);
+    }, 5000);
 }
 
 //==============Main==============//
@@ -150,10 +169,15 @@ window.onload = ()=> {
             if (myCoin <= 0) { wait = false; return; };
             getSkin();
             gachaMovie();
+            setTimeout(function() {
+                document.querySelector('body').addEventListener('click', function(){
+                    location.reload();
+                })
+            }, 7000)
         })
 
         //==============test==============//
-        document.querySelector('.gacha-main').addEventListener('click', function(){
+        document.querySelector('.gacha-machine').addEventListener('click', function(){
             myCoin += 5;
             myCoinCounter();
         })
