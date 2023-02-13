@@ -1,4 +1,5 @@
 body {
+    height: 100vh;
     background: url(/img/body_background.png) no-repeat center center;
     background-attachment: fixed;
     background-size: cover;
@@ -45,7 +46,7 @@ body {
 
 //==========メニュー画面==========//
 #menu {
-
+    text-align: center;
     #menu-top {
         display: flex;
 
@@ -110,63 +111,65 @@ body {
             }//p
         }//mycoin
     }
+
+    //#menu-main//
     #menu-main {
-        display: flex;
+        width: 80%;
+        height: 60%;
+        margin: 6% auto 4%;
         justify-content: space-around;
-        margin-left: 100px;
-        margin-right: 150px;
-
+        display: flex;
+        
         .avatar {
-            margin-top: 100px;
             background: #ffffffa1;
-            border-radius: 40px 40px 40px 40px;
+            border-radius: 8%;
             border: outset 5px;
-            height: 600px;
-        }
+        }//avatar
 
-        .select {
-            background: #797979;
-            padding-top: 20px;
-            padding-left: 5px;
-            margin-top: 100px;
+        #select-box {
+            background: white;
+            border: 4px solid #797979;
+            border-radius: 20px;
+            width: 60%;
+            overflow: hidden;
 
-            .top_content {
-                font-size: 30px;
-                color: #fff;
-                background: #ff5c5c;
-                text-decoration: none;
-                padding: 10px;
-            }
-
-            .itemlist {
-                padding-left:0;
-                list-style:none;
-                display: grid;
-                margin: 30px;
-                grid-template-columns: 200px 200px 200px;
-                grid-template-rows: 150px 150px 150px;
-                gap: 30px;
+            //select-btn//
+            .select-btn {
+                padding: 2% 0 0 2%;
                 background: #797979;
+                display: flex;
+                .s-btn {
+                    color: #fff;
+                    font-size: 30px;
+                    padding: 10px;
+                    border-radius: 20px;
+                }//s-btn
+                @for $i from 1 through 3 {
+                    .s-btn:nth-of-type(#{$i}) {
+                        background: rgb(255, 20 + $i * 60, 140);
+                        border: 4px solid rgb(255, 20 + $i * 60, 140);
+                    }
+                }
+
+            }//select-btn
+            .itemlist {
+                background: #797979;
+                margin: 30px;
+                display: flex;
                 .item {
-                    background: #fff;
+                    width: 20%;
+                    background: #ff0000;
                 }
             }
         }//select
     }//menu-main
-    .top_content1 {
-        display: inline-block;
-        justify-content: center;
-        text-decoration: none;
-        margin-top: 50px;
-        margin-left: 40%;
-        padding: 50px;
-        padding-left: 100px;
-        padding-right: 100px;
+    .start-btn {
         font-size: 40px;
         background: #b77abd;
-        list-style: none;
         color: #fff;
-        border-radius: 40px 40px 40px 40px;
+        border-radius: 40px;
+        padding: 40px 100px;
+        display: inline-block;
     }
 }//menu
 
