@@ -4,6 +4,9 @@ body {
   background-attachment: fixed;
   background-size: cover;
   overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 #top {
@@ -142,10 +145,18 @@ body {
   background: rgb(255, 200, 140);
   border: 4px solid rgb(255, 200, 140);
 }
+#menu #menu-main #select-box .itemlist-color01 {
+  border: 8px solid rgb(255, 80, 140);
+}
+#menu #menu-main #select-box .itemlist-color02 {
+  border: 8px solid rgb(255, 140, 140);
+}
+#menu #menu-main #select-box .itemlist-color03 {
+  border: 8px solid rgb(255, 200, 140);
+}
 #menu #menu-main #select-box .itemlist {
   background: #797979;
   margin: 0 2% 0 2%;
-  border: 8px solid rgb(255, 80, 140);
   border-radius: 20px;
   border-top-left-radius: 0;
   height: 84%;

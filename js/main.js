@@ -77,6 +77,9 @@ function myCoinCounter() {
 
 
 //==============Menu==============//
+function selectBoxBtn(selectNum) {
+    
+}
 function selectBoxData() {
 
 }
@@ -169,23 +172,25 @@ let myCoin = Number(searchNameCookie('myCoin'));
 if(myCoin == "") { myCoin = 0; };
 myCoinCounter();
 
-//==============メニュー.html==============//
-window.onload = ()=> {
-    // パスの取得
-    let path = location.pathname
+
+window.addEventListener('DOMContentLoaded', function() {
+    //==============メニュー.html==============//
+    let path = location.pathname;
     if (path == "/menu.html") {
+        document.querySelector('.select-btn').addEventListener('click', function(e) {
+            if (e.target.className != 'select-btn') {
+                let sbtn = document.querySelectorAll('.s-btn');
+                let selectNum = [].slice.call(sbtn).indexOf(e.target);
+                selectBoxBtn(selectNum);
+            }
+
+        })
 
         selectBoxList();
     } 
-}
-
-
-//==============ガチャ.html==============//
-window.onload = ()=> {
-    // パスの取得
-    let path = location.pathname;
+    //==============ガチャ.html==============//
+    path = location.pathname;
     if (path == "/gacha.html") {
-
         document.querySelector('.gacha-btn').addEventListener('click', function(){
             if (wait == true) { return; };
             wait = true;
@@ -199,12 +204,10 @@ window.onload = ()=> {
                 })
             }, 7000)
         })
-
         //==============test==============//
         document.querySelector('.gacha-machine').addEventListener('click', function(){
             myCoin += 5;
             myCoinCounter();
         })
-    } 
-}
-
+    }
+})
