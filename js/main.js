@@ -59,9 +59,11 @@ const BODY_SKIN = ["normal_body.PNG", "christmas_body.PNG", "kanhuku_body.PNG", 
 const HEAD_SKIN_ITEM = ["", "head-item/christmas_head_item.PNG", "head-item/kanhuku_head_item.PNG", "head-item/odairisama_head_item.PNG", "head-item/ohinasama_head_item.PNG", "head-item/pajama_head_item.PNG", "head-item/pumpkin_head_item.PNG", "head-item/rabbit_head_item.PNG", "head-item/wizard_head_item.PNG"]; //あたま(item)
 const BODY_SKIN_ITEM = ["", "body-item/christmas_body_item.PNG", "body-item/kanhuku_body_item.PNG", "body-item/odairisama_body_item.PNG", "body-item/ohinasama_body_item.PNG", "body-item/pajama_body_item.PNG", "body-item/pumpkin_body_item.PNG", "body-item/rabbit_body_item.PNG", "body-item/wizard_body_item.PNG"]; //からだ(item)
 
-
-let mySkinNum = Number(searchNameCookie('mySkinNum'));
-if (mySkinNum == "") { mySkinNum = 0 };
+let myHeadSkinNum = Number(searchNameCookie('myHeadSkinNum'));
+if (myHeadSkinNum == "") { myHeadSkinNum = 0 };
+let myBodySkinNum = Number(searchNameCookie('myBodySkinNum'));
+if (myBodySkinNum == "") { myBodySkinNum = 0 };
+let mySkinNum = myHeadSkinNum + myBodySkinNum;
 let valueImg = "";
 
 
@@ -71,6 +73,18 @@ function myCoinCounter() {
     let myCoinNum = document.querySelector('.mycoin-num');
     myCoinNum.innerHTML = '×' +  myCoin;
 }
+
+
+
+//==============Menu==============//
+function selectBoxData() {
+
+}
+function selectBoxList() {
+
+}
+
+
 
 //==============Gacha==============//
 
@@ -89,6 +103,14 @@ function getSkin(){
         valueImg = HEAD_OR_BODY[randomNum1][randomNum2];
         if (searchValueCookie(valueImg) == "" && valueImg != "") {
             document.cookie = 'mySkin' + mySkinNum + '=' + valueImg;
+            switch (randomNum1) {
+                case 0: 
+                    myHeadSkinNum += 1;
+                    document.cookie = 'myHeadSkinNum=' + myHeadSkinNum;
+                case 1: 
+                    myBodySkinNum += 1;
+                    document.cookie = 'myBodySkinNum=' + myBodySkinNum;
+            }
             mySkinNum += 1;
             document.cookie = 'mySkinNum=' + mySkinNum;
             if(SKIN_NUM - 2 < mySkinNum) { mySkinNum = 0; };
@@ -152,6 +174,8 @@ window.onload = ()=> {
     // パスの取得
     let path = location.pathname
     if (path == "/menu.html") {
+
+        selectBoxList();
     } 
 }
 
