@@ -128,15 +128,15 @@ function selectBoxRemove() {
 function selectBoxImage() {
     let mySkinImage = document.createElement('img');
     let pickList = 0;
-    for (let i = 0; i < mySkinNum; i++) {
-        if (searchValueCookie('myskin' + i).slice(4) == selectItem) {
+    for (let i = 0; i < mySkinNum - 1; i++) {
+        if (searchValueCookie('mySkin' + i).slice(0, 4) == selectItem) {
             let skinImage = {
                 class: 'skinImage',
-                src: 'img/' + searchValueCookie('myskin' + i),
-                alt: 'myskin',
+                src: 'img/' + searchValueCookie('mySkin' + i),
+                alt: 'マイスキン',
             }
             FuncSetAttribute(mySkinImage, skinImage);
-            let createImage = document.getElementsByClassName('.item')[pickList];
+            let createImage = document.getElementsByClassName('item')[pickList];
             console.log(createImage);
             createImage.appendChild(mySkinImage);
             pickList += 1;
@@ -245,6 +245,7 @@ window.addEventListener('DOMContentLoaded', function() {
     let path = location.pathname;
     if (path == "/menu.html") {
         selectBoxList();
+        selectBoxImage();
         document.querySelector('.select-btn').addEventListener('click', function(e) {
             if (e.target.className != 'select-btn') {
                 let sbtn = document.querySelectorAll('.s-btn');
@@ -252,13 +253,15 @@ window.addEventListener('DOMContentLoaded', function() {
                 switch (selectNum) {
                     case 0: selectItem = 'head'; break;
                     case 1: selectItem = 'body'; break;
-                    case 2: selectItem = 'gacha'; break;
+                    // case 2: selectItem = 'gacha'; break;
+                    case 2: window.location.href = 'gacha.html';
                 }
                 btnBorderChange(selectNum);
                 selectBoxBtn(selectNum);
             }
             selectBoxRemove();
             selectBoxList();
+            selectBoxImage();
         })
     } 
     //==============ガチャ.html==============//

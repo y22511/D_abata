@@ -214,10 +214,20 @@ body {
 #menu #menu-main #select-box .itemlist .item {
   background: rgba(255, 255, 255, 0.4);
   width: 23%;
-  height: 40%;
+  height: 50%;
   border-radius: 8px;
   margin: 1% 0 1%;
   overflow: hidden;
+  justify-content: center;
+  display: flex;
+}
+#menu #menu-main #select-box .itemlist .item .skinImage {
+  background: white;
+  width: 100%;
+  height: auto;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #menu #menu-main #select-box .itemlist::-webkit-scrollbar {
   width: 16px;
