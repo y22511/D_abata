@@ -175,6 +175,11 @@ if(myCoin == "") { myCoin = 0; };
 myCoinCounter();
 
 
+function basicSample(){
+    swal("きをつけてね。");
+  }
+
+
 window.addEventListener('DOMContentLoaded', function() {
     //==============メニュー.html==============//
     let path = location.pathname;
