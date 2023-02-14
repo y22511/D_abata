@@ -4,6 +4,9 @@ body {
   background-attachment: fixed;
   background-size: cover;
   overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 #top {
@@ -31,8 +34,47 @@ body {
   max-height: 184%;
   display: block;
 }
+#top button {
+  min-width: 160px;
+  margin: 3rem 0 0;
+  padding: 1.2rem 2.8rem;
+  border: none;
+  border-radius: 5px;
+  background: #3085d6;
+  font-size: 1.6rem;
+  color: #fff;
+}
+#top button:hover {
+  background: #2b78c1;
+}
+#top .btn-success {
+  min-width: 160px;
+  margin: 3rem 5px 0;
+  padding: 1.2rem 2.8rem;
+  border: none;
+  border-radius: 5px;
+  background: #5cb85c;
+  font-size: 1.6rem;
+  color: #fff;
+}
+#top .btn-success:hover {
+  background: #449d44;
+}
+#top .btn-danger {
+  min-width: 160px;
+  margin: 3rem 5px 0;
+  padding: 1.2rem 2.8rem;
+  border: none;
+  border-radius: 5px;
+  background: #d9534f;
+  font-size: 1.6rem;
+  color: #fff;
+}
+#top .btn-danger:hover {
+  background: #c9302c;
+}
 #top #top-menu li {
-  font-size: 2em;
+  font-size: 6em;
   background-color: rgba(255, 92, 0, 0.3);
   opacity: 0.3;
   width: auto;
@@ -116,9 +158,9 @@ body {
   border: 4px solid #797979;
   border-radius: 20px;
   width: 60%;
-  overflow: hidden;
 }
 #menu #menu-main #select-box .select-btn {
+  border-radius: 14px 14px 0 0;
   padding: 2% 0 0 2%;
   background: #797979;
   display: flex;
@@ -127,28 +169,82 @@ body {
   color: #fff;
   font-size: 30px;
   padding: 10px;
-  border-radius: 20px;
+  padding-bottom: 0px;
+  border: 8px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px 20px 0 0;
 }
 #menu #menu-main #select-box .select-btn .s-btn:nth-of-type(1) {
   background: rgb(255, 80, 140);
-  border: 4px solid rgb(255, 80, 140);
+}
+#menu #menu-main #select-box .select-btn .s-btncolor01 {
+  border: 8px solid rgb(255, 80, 140);
 }
 #menu #menu-main #select-box .select-btn .s-btn:nth-of-type(2) {
   background: rgb(255, 140, 140);
-  border: 4px solid rgb(255, 140, 140);
+}
+#menu #menu-main #select-box .select-btn .s-btncolor02 {
+  border: 8px solid rgb(255, 140, 140);
 }
 #menu #menu-main #select-box .select-btn .s-btn:nth-of-type(3) {
   background: rgb(255, 200, 140);
-  border: 4px solid rgb(255, 200, 140);
+}
+#menu #menu-main #select-box .select-btn .s-btncolor03 {
+  border: 8px solid rgb(255, 200, 140);
+}
+#menu #menu-main #select-box .itemlist-color01 {
+  border: 8px solid rgb(255, 80, 140);
+}
+#menu #menu-main #select-box .itemlist-color02 {
+  border: 8px solid rgb(255, 140, 140);
+}
+#menu #menu-main #select-box .itemlist-color03 {
+  border: 8px solid rgb(255, 200, 140);
 }
 #menu #menu-main #select-box .itemlist {
   background: #797979;
-  margin: 30px;
+  margin: 0 2% 0 2%;
+  border-radius: 20px;
+  border-top-left-radius: 0;
+  height: 84%;
+  justify-content: space-around;
+  flex-wrap: wrap;
   display: flex;
+  overflow-y: scroll;
 }
 #menu #menu-main #select-box .itemlist .item {
-  width: 20%;
-  background: #ff0000;
+  background: rgba(255, 255, 255, 0.4);
+  width: 23%;
+  height: 50%;
+  border-radius: 8px;
+  margin: 1% 0 1%;
+  overflow: hidden;
+  justify-content: center;
+  display: flex;
+}
+#menu #menu-main #select-box .itemlist .item .skinImage {
+  background: white;
+  width: 100%;
+  height: auto;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#menu #menu-main #select-box .itemlist::-webkit-scrollbar {
+  width: 16px;
+  height: 20px;
+}
+#menu #menu-main #select-box .itemlist::-webkit-scrollbar-thumb {
+  background: rgb(255, 125, 171);
+  border: 4px solid rgb(255, 244, 237);
+  border-radius: 100px;
+}
+#menu #menu-main #select-box .itemlist::-webkit-scrollbar-thumb:hover {
+  background: rgb(255, 185, 171);
+  border: 4px solid rgb(255, 244, 245);
+}
+#menu #menu-main #select-box .itemlist::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 100px;
 }
 #menu .start-btn {
   font-size: 40px;
@@ -307,14 +403,14 @@ body {
   transform: rotate(180deg);
 }
 
+#game {
+  background: url(/img/game_background.jpg) no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
 #game #game #game {
   padding: 0;
   margin: 0;
-}
-#game #game #game .canvas {
-  background: url(/img/22823124.jpg) no-repeat center center;
-  background-attachment: fixed;
-  background-size: cover;
   display: block;
   margin: 0 auto;
 }

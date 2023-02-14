@@ -4,6 +4,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
     overflow: hidden;
+    user-select: none;
 }
 
 
@@ -34,9 +35,48 @@ body {
             display: block;
         }//top-img1  
     }//#top-title
+    button  {
+        min-width: 160px;
+        margin: 3rem 0 0;
+        padding: 1.2rem 2.8rem;
+        border: none;
+        border-radius: 5px;
+        background: #3085d6;
+        font-size: 1.6rem;
+        color: #fff;
+    } 
+    button:hover {
+        background: #2b78c1;
+    }
+    .btn-success  {
+    min-width: 160px;
+    margin: 3rem 5px 0;
+    padding: 1.2rem 2.8rem;
+    border: none;
+    border-radius: 5px;
+    background: #5cb85c;
+    font-size: 1.6rem;
+    color: #fff;
+    } 
+    .btn-success:hover {
+        background: #449d44;
+    }
+    .btn-danger  {
+    min-width: 160px;
+    margin: 3rem 5px 0;
+    padding: 1.2rem 2.8rem;
+    border: none;
+    border-radius: 5px;
+    background: #d9534f;
+    font-size: 1.6rem;
+    color: #fff;
+    } 
+    .btn-danger:hover {
+        background: #c9302c;
+    }
     #top-menu {
         li {
-            font-size: 2em;
+            font-size: 6em;
             background-color: rgba(255, 92, 0, 0.3);
             opacity: 0.3;
             width: auto;
@@ -121,20 +161,39 @@ body {
         display: flex;
         
         .avatar {
+            position: relative;
+            display: inline-block;
             background: #ffffffa1;
             border-radius: 8%;
             border: outset 5px;
+            overflow: hidden;
+            
         }//avatar
+        .avatar img{
+            display: block;
+            max-width: 60%;
+            height: auto;
+            margin-left: 20%;
+        }
+        .avatar img:nth-of-type(2){
+            position: absolute;
+            right: 20%;
+            bottom: 0%;
+            top: 1px;
+            width: 60%;
+            height: auto;
+        }
 
         #select-box {
             background: white;
             border: 4px solid #797979;
             border-radius: 20px;
             width: 60%;
-            overflow: hidden;
+            // overflow: hidden;
 
             //select-btn//
             .select-btn {
+                border-radius: 14px 14px 0 0;
                 padding: 2% 0 0 2%;
                 background: #797979;
                 display: flex;
@@ -142,25 +201,78 @@ body {
                     color: #fff;
                     font-size: 30px;
                     padding: 10px;
-                    border-radius: 20px;
+                    padding-bottom: 0px;
+                    border: 8px solid rgba(255, 255, 255, 0.5);
+                    border-radius: 20px 20px 0 0;
                 }//s-btn
                 @for $i from 1 through 3 {
                     .s-btn:nth-of-type(#{$i}) {
                         background: rgb(255, 20 + $i * 60, 140);
-                        border: 4px solid rgb(255, 20 + $i * 60, 140);
+                    }
+                    .s-btncolor0#{$i} {
+                        border: 8px solid rgba(255, 20 + $i * 60, 140);
                     }
                 }
 
+                
+
             }//select-btn
+            .itemlist-color01 {
+                border: 8px solid rgb(255, 80, 140);
+            }
+            .itemlist-color02 {
+                border: 8px solid rgb(255, 140, 140);
+            }
+            .itemlist-color03 {
+                border: 8px solid rgb(255, 200, 140);
+            }
             .itemlist {
                 background: #797979;
-                margin: 30px;
+                margin: 0 2% 0 2%;
+                border-radius: 20px;
+                border-top-left-radius: 0;
+                height: 84%;
+                justify-content: space-around;
+                flex-wrap: wrap;
                 display: flex;
+                overflow-y: scroll;
                 .item {
-                    width: 20%;
-                    background: #ff0000;
+                    background: rgba(255, 255, 255, 0.4);
+                    width: 23%;
+                    height: 50%;
+                    border-radius: 8px;
+                    margin: 1% 0 1%;
+                    overflow: hidden;
+                    justify-content: center;
+                    display: flex;
+                    .skinImage {
+                        background: white;
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                        object-fit: cover;
+                    }
                 }
             }
+
+            //itemlist_scroll//
+            .itemlist::-webkit-scrollbar {
+                width: 16px;
+                height: 20px;
+            }
+            .itemlist::-webkit-scrollbar-thumb {
+                background: rgb(255, 125, 171);
+                border: 4px solid rgb(255, 244, 237);
+                border-radius: 100px;
+            }
+            .itemlist::-webkit-scrollbar-thumb:hover {
+                background: rgb(255, 185, 171);
+                border: 4px solid rgb(255, 244, 245);
+            }
+            .itemlist::-webkit-scrollbar-track {
+                background: white;
+                border-radius: 100px;
+            }//itemlist_scroll
         }//select
     }//menu-main
     .start-btn {
