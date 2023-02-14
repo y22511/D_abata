@@ -231,15 +231,16 @@ let myCoin = Number(searchValueCookie('myCoin'));
 if(myCoin == "") { myCoin = 0; };
 myCoinCounter();
 
-// window.onload = function(){
-//     let width = document.body.clientWidth;
-//     let height = window.outerHeight;
-//     if (width <= 1903 || height <= 969) {
-//         alert('全画面表示推奨です。')
-//     }
-// }
-
 window.addEventListener('DOMContentLoaded', function() {
+
+    let width = document.body.clientWidth;
+    let height = window.outerHeight;
+    if (width <= 1903 || height <= 969) {
+        flag = confirm("全画面表示推奨です。");
+        if ( flag == true ){
+            document.body.requestFullscreen();
+        }
+    }
     
     //==============メニュー.html==============//
     let path = location.pathname;
