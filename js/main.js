@@ -78,7 +78,9 @@ function myCoinCounter() {
 
 //==============Menu==============//
 function selectBoxBtn(selectNum) {
-    
+    switch (selectNum) {
+        case 0: 
+    }
 }
 function selectBoxData() {
 
