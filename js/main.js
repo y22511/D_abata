@@ -172,13 +172,16 @@ let myCoin = Number(searchNameCookie('myCoin'));
 if(myCoin == "") { myCoin = 0; };
 myCoinCounter();
 
-
-function basicSample(){
-    swal("きをつけてね。");
-  }
-
+window.onload = function(){
+    let width = document.body.clientWidth;
+    let height = window.outerHeight;
+    if (width <= 1903 || height <= 969) {
+        alert('全画面表示推奨です。')
+    }
+}
 
 window.addEventListener('DOMContentLoaded', function() {
+    
     //==============メニュー.html==============//
     let path = location.pathname;
     if (path == "/menu.html") {

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/css_rst/destyle.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="ex.css">
-    <link href="css/sweetalert2.css"/ rel="stylesheet">
+    <link href="css/sweetalert2.css" / rel="stylesheet">
 </head>
 
 <body id="top">
@@ -24,21 +24,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="js/main.js"></script>
     <script>
-        document.getElementById("alert-demo").onclick = function(){
-        var options = {
-            text: 'データを削除しますか？', //\nでテキストの改行が出来ます
-            buttons: {
-                cancel: 'キャンセル',
-                ok: '削除する'
+        document.getElementById("alert-demo").onclick = function () {
+            //cookie 入っているか確認して分岐
+            if (document.cookie != "") {
+                console.log(document.cookie);
+                var options = {
+                    text: 'データを削除しますか？',
+                    buttons: {
+                        cancel: 'キャンセル',
+                        ok: '削除する'
+                    }
+                }
+                swal(options).then(function (value) {
+                    if (value) {
+                        //表示するを選んだ場合の処理
+                        swal('ゲームを始めます。');
+                    }
+                });
             }
+            swal('ゲームを始めます。');
         };
-        swal(options).then(function(value){
-            if(value){
-                //表示するを選んだ場合の処理
-                swal('削除しました。\nゲームを始めます。');
-            }
-        });
-    };
     </script>
 </body>
 
