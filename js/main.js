@@ -66,7 +66,6 @@ if (myBodySkinNum == "") { myBodySkinNum = 0 };
 let mySkinNum = myHeadSkinNum + myBodySkinNum;
 let valueImg = "";
 
-
 //==============Coin==============//
 
 function myCoinCounter() {
@@ -77,9 +76,22 @@ function myCoinCounter() {
 
 
 //==============Menu==============//
-function selectBoxBtn(selectNum) {
-    
+function btnBorderChange(selectNum) {
+    let selectBtn = document.querySelectorAll('.s-btn')[selectNum];
+    if (selectBtn.classList.length == 1) {
+        selectBtn.classList.add('s-btncolor0' + (selectNum + 1));
+    }
+    let notSelectBtn = document.querySelectorAll('.s-btn');
 }
+function selectBoxBtn(selectNum) {
+    let itemList = document.querySelector('.itemlist');
+    let originalClass = 'itemlist-color0' + itemList.classList.value.slice(-1);
+    let changeClass = 'itemlist-color0' + (selectNum + 1);
+
+    if (originalClass == changeClass) { return; };
+    itemList.classList.replace(originalClass, changeClass);
+}//selectBoxBtn
+
 function selectBoxData() {
 
 }
@@ -189,11 +201,10 @@ window.addEventListener('DOMContentLoaded', function() {
             if (e.target.className != 'select-btn') {
                 let sbtn = document.querySelectorAll('.s-btn');
                 let selectNum = [].slice.call(sbtn).indexOf(e.target);
+                btnBorderChange(selectNum);
                 selectBoxBtn(selectNum);
             }
-
         })
-
         selectBoxList();
     } 
     //==============ガチャ.html==============//

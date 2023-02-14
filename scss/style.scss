@@ -184,14 +184,17 @@ body {
                     font-size: 30px;
                     padding: 10px;
                     padding-bottom: 0px;
+                    border: 8px solid rgba(255, 255, 255, 0.5);
                     border-radius: 20px 20px 0 0;
                 }//s-btn
                 @for $i from 1 through 3 {
+                    .s-btncolor0#{$i},
                     .s-btn:nth-of-type(#{$i}) {
                         background: rgb(255, 20 + $i * 60, 140);
-                        border: 4px solid rgb(255, 20 + $i * 60, 140);
                     }
                 }
+
+                
 
             }//select-btn
             .itemlist-color01 {
