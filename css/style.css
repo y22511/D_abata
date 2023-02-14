@@ -34,8 +34,47 @@ body {
   max-height: 184%;
   display: block;
 }
+#top button {
+  min-width: 160px;
+  margin: 3rem 0 0;
+  padding: 1.2rem 2.8rem;
+  border: none;
+  border-radius: 5px;
+  background: #3085d6;
+  font-size: 1.6rem;
+  color: #fff;
+}
+#top button:hover {
+  background: #2b78c1;
+}
+#top .btn-success {
+  min-width: 160px;
+  margin: 3rem 5px 0;
+  padding: 1.2rem 2.8rem;
+  border: none;
+  border-radius: 5px;
+  background: #5cb85c;
+  font-size: 1.6rem;
+  color: #fff;
+}
+#top .btn-success:hover {
+  background: #449d44;
+}
+#top .btn-danger {
+  min-width: 160px;
+  margin: 3rem 5px 0;
+  padding: 1.2rem 2.8rem;
+  border: none;
+  border-radius: 5px;
+  background: #d9534f;
+  font-size: 1.6rem;
+  color: #fff;
+}
+#top .btn-danger:hover {
+  background: #c9302c;
+}
 #top #top-menu li {
-  font-size: 2em;
+  font-size: 6em;
   background-color: rgba(255, 92, 0, 0.3);
   opacity: 0.3;
   width: auto;
