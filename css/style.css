@@ -173,17 +173,23 @@ body {
   border: 8px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px 20px 0 0;
 }
-#menu #menu-main #select-box .select-btn .s-btncolor01,
 #menu #menu-main #select-box .select-btn .s-btn:nth-of-type(1) {
   background: rgb(255, 80, 140);
 }
-#menu #menu-main #select-box .select-btn .s-btncolor02,
+#menu #menu-main #select-box .select-btn .s-btncolor01 {
+  border: 8px solid rgb(255, 80, 140);
+}
 #menu #menu-main #select-box .select-btn .s-btn:nth-of-type(2) {
   background: rgb(255, 140, 140);
 }
-#menu #menu-main #select-box .select-btn .s-btncolor03,
+#menu #menu-main #select-box .select-btn .s-btncolor02 {
+  border: 8px solid rgb(255, 140, 140);
+}
 #menu #menu-main #select-box .select-btn .s-btn:nth-of-type(3) {
   background: rgb(255, 200, 140);
+}
+#menu #menu-main #select-box .select-btn .s-btncolor03 {
+  border: 8px solid rgb(255, 200, 140);
 }
 #menu #menu-main #select-box .itemlist-color01 {
   border: 8px solid rgb(255, 80, 140);
@@ -206,7 +212,7 @@ body {
   overflow-y: scroll;
 }
 #menu #menu-main #select-box .itemlist .item {
-  background: white;
+  background: rgba(255, 255, 255, 0.4);
   width: 23%;
   height: 40%;
   border-radius: 8px;

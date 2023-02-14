@@ -28,7 +28,7 @@ function valueCookie() {
     return value;
 }
 //-----nameを入れるとvalueが返ってくる-----//
-function searchNameCookie(item) {
+function searchValueCookie(item) {
     let i = 0;
     let itemValue = "";
     nameCookie().forEach(function() {
@@ -38,7 +38,7 @@ function searchNameCookie(item) {
     return itemValue;
 }
 //-----valueを入れるとnameが返ってくる-----//
-function searchValueCookie(item) {
+function searchNameCookie(item) {
     let i = 0;
     let itemName = "";
     valueCookie().forEach(function() {
@@ -59,12 +59,13 @@ const BODY_SKIN = ["normal_body.PNG", "christmas_body.PNG", "kanhuku_body.PNG", 
 const HEAD_SKIN_ITEM = ["", "head-item/christmas_head_item.PNG", "head-item/kanhuku_head_item.PNG", "head-item/odairisama_head_item.PNG", "head-item/ohinasama_head_item.PNG", "head-item/pajama_head_item.PNG", "head-item/pumpkin_head_item.PNG", "head-item/rabbit_head_item.PNG", "head-item/wizard_head_item.PNG"]; //あたま(item)
 const BODY_SKIN_ITEM = ["", "body-item/christmas_body_item.PNG", "body-item/kanhuku_body_item.PNG", "body-item/odairisama_body_item.PNG", "body-item/ohinasama_body_item.PNG", "body-item/pajama_body_item.PNG", "body-item/pumpkin_body_item.PNG", "body-item/rabbit_body_item.PNG", "body-item/wizard_body_item.PNG"]; //からだ(item)
 
-let myHeadSkinNum = Number(searchNameCookie('myHeadSkinNum'));
+let myHeadSkinNum = Number(searchValueCookie('myHeadSkinNum'));
 if (myHeadSkinNum == "") { myHeadSkinNum = 0 };
-let myBodySkinNum = Number(searchNameCookie('myBodySkinNum'));
+let myBodySkinNum = Number(searchValueCookie('myBodySkinNum'));
 if (myBodySkinNum == "") { myBodySkinNum = 0 };
 let mySkinNum = myHeadSkinNum + myBodySkinNum;
 let valueImg = "";
+let selectItem = 'head';
 
 //==============Coin==============//
 
@@ -80,9 +81,16 @@ function btnBorderChange(selectNum) {
     let selectBtn = document.querySelectorAll('.s-btn')[selectNum];
     if (selectBtn.classList.length == 1) {
         selectBtn.classList.add('s-btncolor0' + (selectNum + 1));
+        for (let i = 0; i < 3; i++) {
+            if (i != selectNum) {
+                let notSelectBtn = document.querySelector('.s-btncolor0' + (i + 1));
+                if (notSelectBtn != null) {
+                    notSelectBtn.classList.remove('s-btncolor0' + (i + 1));
+                }
+            }
+        }
     }
-    let notSelectBtn = document.querySelectorAll('.s-btn');
-}
+}//btnBorderChange
 function selectBoxBtn(selectNum) {
     let itemList = document.querySelector('.itemlist');
     let originalClass = 'itemlist-color0' + itemList.classList.value.slice(-1);
@@ -92,10 +100,49 @@ function selectBoxBtn(selectNum) {
     itemList.classList.replace(originalClass, changeClass);
 }//selectBoxBtn
 
-function selectBoxData() {
-
-}
 function selectBoxList() {
+    var listNum = 0;
+    if (selectItem == 'head') {
+        listNum = myHeadSkinNum;
+    } else if (selectItem == 'body') {
+        listNum = myBodySkinNum;
+    }
+    while (listNum % 4 != 0) {
+        listNum += 1;
+    }
+
+    //リスト生成
+    let itemList = document.querySelector('.itemlist');
+    for (let i = 0; i < listNum; i++) {
+        let selectBoxList = document.createElement('li');
+        selectBoxList.className = 'item';
+        itemList.appendChild(selectBoxList);
+    }
+}
+function selectBoxRemove() {
+    let itemList = document.querySelector('.itemlist');
+    while (itemList.firstChild) {
+        itemList.removeChild(itemList.firstChild);
+    }
+}
+function selectBoxImage() {
+    let mySkinImage = document.createElement('img');
+    let pickList = 0;
+    for (let i = 0; i < mySkinNum; i++) {
+        if (searchValueCookie('myskin' + i).slice(4) == selectItem) {
+            let skinImage = {
+                class: 'skinImage',
+                src: 'img/' + searchValueCookie('myskin' + i),
+                alt: 'myskin',
+            }
+            FuncSetAttribute(mySkinImage, skinImage);
+            let createImage = document.getElementsByClassName('.item')[pickList];
+            console.log(createImage);
+            createImage.appendChild(mySkinImage);
+            pickList += 1;
+        }
+
+    }
 
 }
 
@@ -180,32 +227,39 @@ function gachaMovie() {
 //==============Main==============//
 
 let wait = false;
-let myCoin = Number(searchNameCookie('myCoin'));
+let myCoin = Number(searchValueCookie('myCoin'));
 if(myCoin == "") { myCoin = 0; };
 myCoinCounter();
 
-window.onload = function(){
-    let width = document.body.clientWidth;
-    let height = window.outerHeight;
-    if (width <= 1903 || height <= 969) {
-        alert('全画面表示推奨です。')
-    }
-}
+// window.onload = function(){
+//     let width = document.body.clientWidth;
+//     let height = window.outerHeight;
+//     if (width <= 1903 || height <= 969) {
+//         alert('全画面表示推奨です。')
+//     }
+// }
 
 window.addEventListener('DOMContentLoaded', function() {
     
     //==============メニュー.html==============//
     let path = location.pathname;
     if (path == "/menu.html") {
+        selectBoxList();
         document.querySelector('.select-btn').addEventListener('click', function(e) {
             if (e.target.className != 'select-btn') {
                 let sbtn = document.querySelectorAll('.s-btn');
                 let selectNum = [].slice.call(sbtn).indexOf(e.target);
+                switch (selectNum) {
+                    case 0: selectItem = 'head'; break;
+                    case 1: selectItem = 'body'; break;
+                    case 2: selectItem = 'gacha'; break;
+                }
                 btnBorderChange(selectNum);
                 selectBoxBtn(selectNum);
             }
+            selectBoxRemove();
+            selectBoxList();
         })
-        selectBoxList();
     } 
     //==============ガチャ.html==============//
     path = location.pathname;

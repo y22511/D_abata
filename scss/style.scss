@@ -44,36 +44,36 @@ body {
         background: #3085d6;
         font-size: 1.6rem;
         color: #fff;
-      } 
-      button:hover {
-          background: #2b78c1;
-      }
-      .btn-success  {
-        min-width: 160px;
-        margin: 3rem 5px 0;
-        padding: 1.2rem 2.8rem;
-        border: none;
-        border-radius: 5px;
-        background: #5cb85c;
-        font-size: 1.6rem;
-        color: #fff;
-      } 
-      .btn-success:hover {
-          background: #449d44;
-      }
-      .btn-danger  {
-        min-width: 160px;
-        margin: 3rem 5px 0;
-        padding: 1.2rem 2.8rem;
-        border: none;
-        border-radius: 5px;
-        background: #d9534f;
-        font-size: 1.6rem;
-        color: #fff;
-      } 
-      .btn-danger:hover {
-          background: #c9302c;
-      }
+    } 
+    button:hover {
+        background: #2b78c1;
+    }
+    .btn-success  {
+    min-width: 160px;
+    margin: 3rem 5px 0;
+    padding: 1.2rem 2.8rem;
+    border: none;
+    border-radius: 5px;
+    background: #5cb85c;
+    font-size: 1.6rem;
+    color: #fff;
+    } 
+    .btn-success:hover {
+        background: #449d44;
+    }
+    .btn-danger  {
+    min-width: 160px;
+    margin: 3rem 5px 0;
+    padding: 1.2rem 2.8rem;
+    border: none;
+    border-radius: 5px;
+    background: #d9534f;
+    font-size: 1.6rem;
+    color: #fff;
+    } 
+    .btn-danger:hover {
+        background: #c9302c;
+    }
     #top-menu {
         li {
             font-size: 6em;
@@ -188,9 +188,11 @@ body {
                     border-radius: 20px 20px 0 0;
                 }//s-btn
                 @for $i from 1 through 3 {
-                    .s-btncolor0#{$i},
                     .s-btn:nth-of-type(#{$i}) {
                         background: rgb(255, 20 + $i * 60, 140);
+                    }
+                    .s-btncolor0#{$i} {
+                        border: 8px solid rgba(255, 20 + $i * 60, 140);
                     }
                 }
 
@@ -217,7 +219,7 @@ body {
                 display: flex;
                 overflow-y: scroll;
                 .item {
-                    background: white;
+                    background: rgba(255, 255, 255, 0.4);
                     width: 23%;
                     height: 40%;
                     border-radius: 8px;
