@@ -139,30 +139,24 @@ function selectBoxImage() {
                 alt: 'マイスキン',
             }
             skinImage.push(skinObj);
-            // mySkinImage.push(document.createElement('img'));
             mySkinImage[pickNum] = document.createElement('img');
-            console.log(mySkinImage);
             FuncSetAttribute(mySkinImage[pickNum], skinImage[pickNum]);
 
             createImage.push(document.getElementsByClassName('item')[pickList]);
-            console.log(mySkinImage)
             createImage[pickNum].appendChild(mySkinImage[pickNum]);
             pickList += 1;
             pickNum += 1;
         }
     }
-    for (let j = 0; j < skinImage.length; j++) {
-        // FuncSetAttribute(mySkinImage, skinImage);
-        // createImage.push(document.getElementsByClassName('item')[pickList]);
+}
 
-        // console.log(createImage);
-        // createImage[pickNum].appendChild(mySkinImage);
-        // console.log(createImage[pickNum]);
-        // pickList += 1;
-        // pickNum += 1;
+function itemSelect(itemNum) {
+    if (selectItem == 'head') {
+        HEAD_SKIN[itemNum];
+        console.log(HEAD_SKIN[itemNum]);
+    } else if (selectItem == 'body') {
+        BODY_SKIN[itemNum];
     }
-    
-
 }
 
 
@@ -270,6 +264,7 @@ window.addEventListener('DOMContentLoaded', function() {
             if (e.target.className != 'select-btn') {
                 let sbtn = document.querySelectorAll('.s-btn');
                 let selectNum = [].slice.call(sbtn).indexOf(e.target);
+                console.log(selectNum);
                 switch (selectNum) {
                     case 0: selectItem = 'head'; break;
                     case 1: selectItem = 'body'; break;
@@ -282,6 +277,12 @@ window.addEventListener('DOMContentLoaded', function() {
             selectBoxRemove();
             selectBoxList();
             selectBoxImage();
+        })
+        document.querySelector('.itemlist').addEventListener('click', function(e) {
+            let item = document.querySelectorAll('.skinImage');
+            let itemNum = [].slice.call(item).indexOf(e.target);
+            itemSelect(itemNum);
+            
         })
     } 
     //==============ガチャ.html==============//
