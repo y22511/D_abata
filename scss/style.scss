@@ -35,6 +35,14 @@ body {
             display: block;
         }//top-img1  
     }//#top-title
+    li{
+        font-size: 2.5em;
+        color: indianred;
+        background-color:rgba(255, 182, 193, 0.671);
+        border-radius: 50px;
+        padding: 20px 30px;
+        margin: 40px 18em;
+    }
     button  {
         min-width: 160px;
         margin: 3rem 0 0;
@@ -477,7 +485,7 @@ body {
 
 //==========ゲーム画面==========//
 #game {
-    background: url(/img/game_background.jpg) no-repeat center center;
+    background: url(/img/game/game_background.jpg) no-repeat center center;
     background-attachment: fixed;
     background-size: cover;
     #game #game {
