@@ -17,15 +17,15 @@
     </div>
     <ul>
         <li><a class="top_content" href="menu.html">つづきから</a></li>
-        <li><input type="button" id="alert-demo" value="はじめから"></li>
+        <li><input type="button" id="start_button" value="はじめから"></li>
         <li><a class="top_content" href="http://www2.iwate-it.ac.jp/~y21500/">おわる</a></li>
     </ul>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="js/main.js"></script>
     <script>
-     document.getElementById("alert-demo").onclick = function () {
+     document.getElementById("start_button").onclick = function () {
             //cookie 入っているか確認して分岐
             if (document.cookie != "") {
-                console.log(document.cookie);
                 var options = {
                     text: 'データを削除しますか？',
                     buttons: {
@@ -43,7 +43,6 @@
             swal('ゲームを始めます。');
         };   
     </script>
-    <script src="js/main.js"></script>
 </body>
 
 </html>
