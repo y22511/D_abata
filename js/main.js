@@ -6,10 +6,10 @@ function FuncSetAttribute(origin, obj) {
 }
 //==============Cookie==============//
 function nameCookie() {
-    let name = [2];
+    let name=[2];
     let i = 0;
-    let r = document.cookie.replace(/ /g, "").split(';');
-    r.forEach(function (e) {
+    let r = document.cookie.replace(/ /g,"").split(';');
+    r.forEach(function(e) {
         content = e.split('=');
         name[i] = content[0];
         i++;
@@ -17,10 +17,10 @@ function nameCookie() {
     return name;
 }
 function valueCookie() {
-    let value = [2];
+    let value=[2];
     let i = 0;
-    let r = document.cookie.replace(/ /g, "").split(';');
-    r.forEach(function (e) {
+    let r = document.cookie.replace(/ /g,"").split(';');
+    r.forEach(function(e) {
         content = e.split('=');
         value[i] = content[1];
         i++;
@@ -31,8 +31,8 @@ function valueCookie() {
 function searchValueCookie(item) {
     let i = 0;
     let itemValue = "";
-    nameCookie().forEach(function () {
-        if (item == nameCookie()[i]) { itemValue = valueCookie()[i] }
+    nameCookie().forEach(function() {
+        if (item == nameCookie()[i]) {itemValue =  valueCookie()[i]}
         i++;
     })
     return itemValue;
@@ -41,8 +41,8 @@ function searchValueCookie(item) {
 function searchNameCookie(item) {
     let i = 0;
     let itemName = "";
-    valueCookie().forEach(function () {
-        if (item == valueCookie()[i]) { itemName = nameCookie()[i] }
+    valueCookie().forEach(function() {
+        if (item == valueCookie()[i]) {itemName =  nameCookie()[i]}
         i++;
     })
     return itemName;
@@ -69,7 +69,7 @@ let selectItem = 'head';
 
 function myCoinCounter() {
     let myCoinNum = document.querySelector('.mycoin-num');
-    myCoinNum.innerHTML = '×' + myCoin;
+    myCoinNum.innerHTML = '×' +  myCoin;
 }
 
 
@@ -124,57 +124,69 @@ function selectBoxRemove() {
     }
 }
 function selectBoxImage() {
-    let mySkinImage = document.createElement('img');
+    let mySkinImage = [];
     let pickList = 0;
+    let pickNum = 0;
+    let skinImage = [];
+    let createImage = [];
     for (let i = 0; i < mySkinNum - 1; i++) {
         if (searchValueCookie('mySkin' + i).slice(0, 4) == selectItem) {
-            let skinImage = {
+            let skinObj = {
                 class: 'skinImage',
                 src: 'img/' + searchValueCookie('mySkin' + i),
-                id: 'skin' + i,
                 alt: 'マイスキン',
             }
-            FuncSetAttribute(mySkinImage, skinImage);
-            let createImage = document.getElementsByClassName('item')[pickList];
-            console.log(createImage);
-            createImage.appendChild(mySkinImage);
+            skinImage.push(skinObj);
+            mySkinImage[pickNum] = document.createElement('img');
+            FuncSetAttribute(mySkinImage[pickNum], skinImage[pickNum]);
+
+            createImage.push(document.getElementsByClassName('item')[pickList]);
+            createImage[pickNum].appendChild(mySkinImage[pickNum]);
             pickList += 1;
+            pickNum += 1;
         }
-
     }
+}
 
+function itemSelect(itemNum) {
+    if (selectItem == 'head') {
+        HEAD_SKIN[itemNum];
+        console.log(HEAD_SKIN[itemNum]);
+    } else if (selectItem == 'body') {
+        BODY_SKIN[itemNum];
+    }
 }
 
 
 
 //==============Gacha==============//
 
-function pullGacha() {
-    if (myCoin <= 0) { console.log("コインが足りないよ"); return; }
+function pullGacha(){
+    if (myCoin <= 0) {console.log("コインが足りないよ"); return;}
     myCoin -= 1;
     document.cookie = 'myCoin =' + myCoin;
     myCoinCounter();
 }
 
-function getSkin() {
-    const HEAD_OR_BODY = [HEAD_SKIN_ITEM, BODY_SKIN_ITEM];
-    while (valueImg == "") {
-        let randomNum1 = Math.floor(Math.random() * 10) % 2;
-        let randomNum2 = Math.floor(Math.random() * SKIN_NUM / 2 - 1) + 1; // 1 ~ 8
+function getSkin(){
+    const HEAD_OR_BODY = [HEAD_SKIN_ITEM, BODY_SKIN_ITEM]; 
+    while (valueImg == ""){
+        let randomNum1 = Math.floor( Math.random() * 10) % 2;
+        let randomNum2 = Math.floor( Math.random() * SKIN_NUM / 2 - 1 ) + 1; // 1 ~ 8
         valueImg = HEAD_OR_BODY[randomNum1][randomNum2];
-        if (searchValueCookie(valueImg) == "" && valueImg != "") {
+        if (searchNameCookie(valueImg) == "" && valueImg != "") {
             document.cookie = 'mySkin' + mySkinNum + '=' + valueImg;
             switch (randomNum1) {
-                case 0:
+                case 0: 
                     myHeadSkinNum += 1;
                     document.cookie = 'myHeadSkinNum=' + myHeadSkinNum;
-                case 1:
+                case 1: 
                     myBodySkinNum += 1;
                     document.cookie = 'myBodySkinNum=' + myBodySkinNum;
             }
             mySkinNum += 1;
             document.cookie = 'mySkinNum=' + mySkinNum;
-            if (SKIN_NUM - 2 < mySkinNum) { mySkinNum = 0; };
+            if(SKIN_NUM - 2 < mySkinNum) { mySkinNum = 0; };
             console.log("新しいスキンをゲットしました！");
         } else {
             console.log("持ってるスキンをゲットしました！");
@@ -187,7 +199,7 @@ function getSkin() {
 function gachaMovie() {
     wait = true;
     let gachaMain = document.querySelector('.gacha-machine');
-
+    
     //カプセルmovie
     let capsuleMovie = document.createElement('img');
     let capsule = {
@@ -206,7 +218,7 @@ function gachaMovie() {
         alt: 'フラッシュ',
     }
     FuncSetAttribute(flashMovie, flash);
-    setTimeout(function () {
+    setTimeout(function(){
         gachaMain.after(flashMovie);
     }, 3000);
 
@@ -218,7 +230,7 @@ function gachaMovie() {
         alt: 'スキン',
     }
     FuncSetAttribute(skinMovie, skin);
-    setTimeout(function () {
+    setTimeout(function(){
         gachaMain.after(skinMovie);
     }, 5000);
 }
@@ -227,7 +239,7 @@ function gachaMovie() {
 
 let wait = false;
 let myCoin = Number(searchValueCookie('myCoin'));
-if (myCoin == "") { myCoin = 0; };
+if(myCoin == "") { myCoin = 0; };
 myCoinCounter();
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -237,10 +249,11 @@ window.addEventListener('DOMContentLoaded', function () {
     if (path == "/menu.html") {
         selectBoxList();
         selectBoxImage();
-        document.querySelector('.select-btn').addEventListener('click', function (e) {
+        document.querySelector('.select-btn').addEventListener('click', function(e) {
             if (e.target.className != 'select-btn') {
                 let sbtn = document.querySelectorAll('.s-btn');
                 let selectNum = [].slice.call(sbtn).indexOf(e.target);
+                console.log(selectNum);
                 switch (selectNum) {
                     case 0: selectItem = 'head'; break;
                     case 1: selectItem = 'body'; break;
@@ -254,25 +267,31 @@ window.addEventListener('DOMContentLoaded', function () {
             selectBoxList();
             selectBoxImage();
         })
-    }
+        document.querySelector('.itemlist').addEventListener('click', function(e) {
+            let item = document.querySelectorAll('.skinImage');
+            let itemNum = [].slice.call(item).indexOf(e.target);
+            itemSelect(itemNum);
+            
+        })
+    } 
     //==============ガチャ.html==============//
     path = location.pathname;
     if (path == "/gacha.html") {
-        document.querySelector('.gacha-btn').addEventListener('click', function () {
+        document.querySelector('.gacha-btn').addEventListener('click', function(){
             if (wait == true) { return; };
             wait = true;
             pullGacha();
             if (myCoin <= 0) { wait = false; return; };
             getSkin();
             gachaMovie();
-            setTimeout(function () {
-                document.querySelector('body').addEventListener('click', function () {
+            setTimeout(function() {
+                document.querySelector('body').addEventListener('click', function(){
                     location.reload();
                 })
             }, 7000)
         })
         //==============test==============//
-        document.querySelector('.gacha-machine').addEventListener('click', function () {
+        document.querySelector('.gacha-machine').addEventListener('click', function(){
             myCoin += 5;
             myCoinCounter();
         })

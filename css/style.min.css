@@ -149,9 +149,26 @@ body {
   display: flex;
 }
 #menu #menu-main .avatar {
+  position: relative;
+  display: inline-block;
   background: rgba(255, 255, 255, 0.631372549);
   border-radius: 8%;
   border: outset 5px;
+  overflow: hidden;
+}
+#menu #menu-main .avatar img {
+  display: block;
+  max-width: 60%;
+  height: auto;
+  margin-left: 20%;
+}
+#menu #menu-main .avatar img:nth-of-type(2) {
+  position: absolute;
+  right: 20%;
+  bottom: 0%;
+  top: 1px;
+  width: 60%;
+  height: auto;
 }
 #menu #menu-main #select-box {
   background: white;
