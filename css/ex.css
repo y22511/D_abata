@@ -1,3 +1,8 @@
-a.top_content{
-    font-size: 2em;
+#top li{
+    font-size: 2.5em;
+    color: indianred;
+    background-color:rgba(255, 182, 193, 0.671);
+    border-radius: 50px;
+    padding: 20px 30px;
+    margin: 40px 18em;
 }
