@@ -238,13 +238,24 @@ body {
   justify-content: center;
   display: flex;
 }
-#menu #menu-main #select-box .itemlist .item .skinImage {
+#menu #menu-main #select-box .itemlist .item .not-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.2;
+}
+#menu #menu-main #select-box .itemlist .item .skin-image {
   background: white;
   width: 100%;
   height: auto;
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
+}
+#menu #menu-main #select-box .itemlist .item:nth-child(1) {
+  background: white;
 }
 #menu #menu-main #select-box .itemlist::-webkit-scrollbar {
   width: 16px;

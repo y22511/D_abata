@@ -67,15 +67,15 @@ function searchNameCookie(item) {
 
 const SKIN_NUM = 20;  //スキンの種類
 
-const HEAD_SKIN = ["head/normal_head.PNG", "head/christmas_head.PNG", "kanhuku_head.PNG", "head/odairisama_head.PNG", "head/ohinasama_head.PNG", "head/pajama_head.PNG", "pumpkin_head.PNG", "head/rabbit_head.PNG", "head/wizard_head.PNG", "head/cowboy_head.PNG"]; //あたま
+const HEAD_SKIN = ["head/normal_head.PNG", "head/christmas_head.PNG", "head/kanhuku_head.PNG", "head/odairisama_head.PNG", "head/ohinasama_head.PNG", "head/pajama_head.PNG", "head/pumpkin_head.PNG", "head/rabbit_head.PNG", "head/wizard_head.PNG", "head/cowboy_head.PNG"]; //あたま
 const BODY_SKIN = ["body/normal_body.PNG", "body/christmas_body.PNG", "body/kanhuku_body.PNG", "body/odairisama_body.PNG", "body/ohinasama_body.PNG", "body/pajama_body.PNG", "body/pumpkin_body.PNG", "body/rabbit_body.PNG", "body/wizard_body.PNG", "body/cowboy_body.PNG"]; //からだ
-const HEAD_SKIN_ITEM = ["", "head-item/christmas_head_item.PNG", "head-item/kanhuku_head_item.PNG", "head-item/odairisama_head_item.PNG", "head-item/ohinasama_head_item.PNG", "head-item/pajama_head_item.PNG", "head-item/pumpkin_head_item.PNG", "head-item/rabbit_head_item.PNG", "head-item/wizard_head_item.PNG", "head-item/cowboy_head_item.PNG"]; //あたま(item)
-const BODY_SKIN_ITEM = ["", "body-item/christmas_body_item.PNG", "body-item/kanhuku_body_item.PNG", "body-item/odairisama_body_item.PNG", "body-item/ohinasama_body_item.PNG", "body-item/pajama_body_item.PNG", "body-item/pumpkin_body_item.PNG", "body-item/rabbit_body_item.PNG", "body-item/wizard_body_item.PNG", "head-item/cowboy_body_item.PNG"]; //からだ(item)
+const HEAD_SKIN_ITEM = ["head-item/normal_head_item.PNG", "head-item/christmas_head_item.PNG", "head-item/kanhuku_head_item.PNG", "head-item/odairisama_head_item.PNG", "head-item/ohinasama_head_item.PNG", "head-item/pajama_head_item.PNG", "head-item/pumpkin_head_item.PNG", "head-item/rabbit_head_item.PNG", "head-item/wizard_head_item.PNG", "head-item/cowboy_head_item.PNG"]; //あたま(item)
+const BODY_SKIN_ITEM = ["body-item/normal_body_item.PNG", "body-item/christmas_body_item.PNG", "body-item/kanhuku_body_item.PNG", "body-item/odairisama_body_item.PNG", "body-item/ohinasama_body_item.PNG", "body-item/pajama_body_item.PNG", "body-item/pumpkin_body_item.PNG", "body-item/rabbit_body_item.PNG", "body-item/wizard_body_item.PNG", "body-item/cowboy_body_item.PNG"]; //からだ(item)
 
 let myHeadSkinNum = Number(searchValueCookie('myHeadSkinNum'));
-if (myHeadSkinNum == "") { myHeadSkinNum = 0 };
+if (myHeadSkinNum == "") { myHeadSkinNum = 1 };
 let myBodySkinNum = Number(searchValueCookie('myBodySkinNum'));
-if (myBodySkinNum == "") { myBodySkinNum = 0 };
+if (myBodySkinNum == "") { myBodySkinNum = 1 };
 let mySkinNum = myHeadSkinNum + myBodySkinNum;
 let valueImg = "";
 let selectItem = 'head';
@@ -114,7 +114,7 @@ function selectBoxBtn(selectNum) {
 }//selectBoxBtn
 
 function selectBoxList() {
-    var listNum = 0;
+    let listNum = 0;
     if (selectItem == 'head') {
         listNum = myHeadSkinNum;
     } else if (selectItem == 'body') {
@@ -138,16 +138,35 @@ function selectBoxRemove() {
         itemList.removeChild(itemList.firstChild);
     }
 }
+function nonSelectBoxImage() {
+    let notImgSrc = '';
+    if (selectItem == 'head') {
+        notImgSrc = HEAD_SKIN_ITEM[0];
+    } else {
+        notImgSrc = BODY_SKIN_ITEM[0];
+    }
+
+    let notImgObj = {
+        class: 'not-image',
+        src: 'img/' + notImgSrc,
+        alt: 'ノーマルスキン'
+    }
+    let notImg = document.createElement('img');
+    FuncSetAttribute(notImg, notImgObj);
+
+    document.querySelector('.item').appendChild(notImg);
+
+}
 function selectBoxImage() {
     let mySkinImage = [];
-    let pickList = 0;
+    let pickList = 1;
     let pickNum = 0;
     let skinImage = [];
     let createImage = [];
     for (let i = 0; i < mySkinNum - 1; i++) {
         if (searchValueCookie('mySkin' + i).slice(0, 4) == selectItem) {
             let skinObj = {
-                class: 'skinImage',
+                class: 'skin-image',
                 src: 'img/' + searchValueCookie('mySkin' + i),
                 alt: 'マイスキン',
             }
@@ -164,7 +183,7 @@ function selectBoxImage() {
 }
 
 function itemSelect(itemNum) {
-    let skinImg = document.querySelectorAll('.skinImage')[itemNum];
+    let skinImg = document.querySelectorAll('.skin-image')[itemNum];
     let skinImgSrc = skinImg.getAttribute('src').slice(4);
     let skinArrayNum = searchArrayNum(skinImgSrc);
     let selectSkin = '';
@@ -200,9 +219,11 @@ function getSkin(){
                 case 0: 
                     myHeadSkinNum += 1;
                     document.cookie = 'myHeadSkinNum=' + myHeadSkinNum;
+                    break;
                 case 1: 
                     myBodySkinNum += 1;
                     document.cookie = 'myBodySkinNum=' + myBodySkinNum;
+                    break;
             }
             mySkinNum += 1;
             document.cookie = 'mySkinNum=' + mySkinNum;
@@ -274,16 +295,16 @@ window.addEventListener('DOMContentLoaded', function() {
     let path = location.pathname;
     if (path == "/menu.html") {
         selectBoxList();
+        nonSelectBoxImage();
         selectBoxImage();
         document.querySelector('.select-btn').addEventListener('click', function(e) {
             if (e.target.className != 'select-btn') {
                 let sbtn = document.querySelectorAll('.s-btn');
                 let selectNum = [].slice.call(sbtn).indexOf(e.target);
-                console.log(selectNum);
+                
                 switch (selectNum) {
                     case 0: selectItem = 'head'; break;
                     case 1: selectItem = 'body'; break;
-                    // case 2: selectItem = 'gacha'; break;
                     case 2: window.location.href = 'gacha.html';
                 }
                 btnBorderChange(selectNum);
@@ -291,13 +312,13 @@ window.addEventListener('DOMContentLoaded', function() {
             }
             selectBoxRemove();
             selectBoxList();
+            nonSelectBoxImage();
             selectBoxImage();
         })
         document.querySelector('.itemlist').addEventListener('click', function(e) {
-            let item = document.querySelectorAll('.skinImage');
+            let item = document.querySelectorAll('.skin-image');
             let itemNum = [].slice.call(item).indexOf(e.target);
             itemSelect(itemNum);
-            
         })
     } 
     //==============ガチャ.html==============//

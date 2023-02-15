@@ -245,13 +245,23 @@ body {
                     overflow: hidden;
                     justify-content: center;
                     display: flex;
-                    .skinImage {
+                    .not-image {
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                        object-fit: cover;
+                        opacity: 0.2;
+                    }
+                    .skin-image {
                         background: white;
                         width: 100%;
                         height: auto;
                         display: block;
                         object-fit: cover;
                     }
+                }
+                .item:nth-child(1) {
+                    background: white;
                 }
             }
 
