@@ -56,8 +56,8 @@ const SKIN_NUM = 18;  //スキンの種類
 
 const HEAD_SKIN = ["normal_head.PNG", "christmas_head.PNG", "kanhuku_head.PNG", "odairisama_head.PNG", "ohinasama_head.PNG", "pajama_head.PNG", "pumpkin_head.PNG", "rabbit_head.PNG", "wizard_head.PNG"]; //あたま
 const BODY_SKIN = ["normal_body.PNG", "christmas_body.PNG", "kanhuku_body.PNG", "odairisama_body.PNG", "ohinasama_body.PNG", "pajama_body.PNG", "pumpkin_body.PNG", "rabbit_body.PNG", "wizard_body.PNG"]; //からだ
-const HEAD_SKIN_ITEM = ["", "head-item/christmas_head_item.PNG", "head-item/kanhuku_head_item.PNG", "head-item/odairisama_head_item.PNG", "head-item/ohinasama_head_item.PNG", "head-item/pajama_head_item.PNG", "head-item/pumpkin_head_item.PNG", "head-item/rabbit_head_item.PNG", "head-item/wizard_head_item.PNG"]; //あたま(item)
-const BODY_SKIN_ITEM = ["", "body-item/christmas_body_item.PNG", "body-item/kanhuku_body_item.PNG", "body-item/odairisama_body_item.PNG", "body-item/ohinasama_body_item.PNG", "body-item/pajama_body_item.PNG", "body-item/pumpkin_body_item.PNG", "body-item/rabbit_body_item.PNG", "body-item/wizard_body_item.PNG"]; //からだ(item)
+const HEAD_SKIN_ITEM = ["", "head-item/christmas_head_item.PNG", "head-item/kanhuku_head_item.PNG", "head-item/odairisama_head_item.PNG", "head-item/ohinasama_head_item.PNG", "head-item/pajama_head_item.PNG", "head-item/pumpkin_head_item.PNG", "head-item/rabbit_head_item.PNG", "head-item/wizard_head_item.PNG", "head-item/cowboy_head_item.PNG"]; //あたま(item)
+const BODY_SKIN_ITEM = ["", "body-item/christmas_body_item.PNG", "body-item/kanhuku_body_item.PNG", "body-item/odairisama_body_item.PNG", "body-item/ohinasama_body_item.PNG", "body-item/pajama_body_item.PNG", "body-item/pumpkin_body_item.PNG", "body-item/rabbit_body_item.PNG", "body-item/wizard_body_item.PNG", "head-item/cowboy_body_item.PNG"]; //からだ(item)
 
 let myHeadSkinNum = Number(searchValueCookie('myHeadSkinNum'));
 if (myHeadSkinNum == "") { myHeadSkinNum = 0 };
@@ -265,13 +265,14 @@ window.addEventListener('DOMContentLoaded', function () {
             selectBoxList();
             selectBoxImage();
         })
-        var $listAItems = document.getElementsByClassName("item").children;
-        for (var $i = 0; $i < $listAItems.length; $i++) {
-            $listAItems[$i].onclick =
-                function () {
+        // var src = skin.getAttribute('src');
+        // // var $listAItems = document.getElementsByClassName("item").children;
+        // // for (var $i = 0; $i < $listAItems.length; $i++) {
+        // //     $listAItems[$i].onclick =
+        // //         function () {
                     
-                };
-        }
+        // //         };
+        // // }
     }
     //==============ガチャ.html==============//
     path = location.pathname;
