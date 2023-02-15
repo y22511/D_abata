@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>teamD_トップ</title>
-        <link rel="stylesheet" href="css/css_rst/destyle.min.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" href="css/ex.css">
-    </head>
-    <body id="top">
-        <div id="top-title">
-            <h1 class="top-title">にゃんにゃんアバター</h1>
-            <img class="top-img1" src="img/top-img1.png" alt="肉球">
-        </div>
-        <ul>
-            <li><a class="top_content" href="menu.html">つづきから</a></li>
-            <li><input class="top_content" type="button" href="#">はじめから</input></li>
-            <li><a class="top_content"href="http://www2.iwate-it.ac.jp/~y21500/">おわる</a></li>
-        </ul>
-        <script src="js/main.js"></script>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>teamD_トップ</title>
+    <link rel="stylesheet" href="css/css_rst/destyle.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/ex.css">
+</head>
+
+<body id="top">
+    <div id="top-title">
+        <h1 class="top-title">にゃんにゃんアバター</h1>
+        <img class="top-img1" src="img/top-img1.png" alt="肉球">
+    </div>
+    <ul>
+        <li><a class="top_content" href="menu.html">つづきから</a></li>
+        <li><input type="button" id="alert-demo" value="はじめから"></li>
+        <li><a class="top_content" href="http://www2.iwate-it.ac.jp/~y21500/">おわる</a></li>
+    </ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script>
+     document.getElementById("alert-demo").onclick = function () {
+            //cookie 入っているか確認して分岐
+            if (document.cookie != "") {
+                console.log(document.cookie);
+                var options = {
+                    text: 'データを削除しますか？',
+                    buttons: {
+                        cancel: 'キャンセル',
+                        ok: '削除する'
+                    }
+                }
+                swal(options).then(function (value) {
+                    if (value) {
+                        //表示するを選んだ場合の処理
+                        swal('ゲームを始めます。');
+                    }
+                });
+            }
+            swal('ゲームを始めます。');
+        };   
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
 </html>

@@ -48,8 +48,6 @@ function searchNameCookie(item) {
     return itemName;
 }
 
-
-
 //==============skin==============//
 
 const SKIN_NUM = 18;  //スキンの種類
@@ -234,15 +232,6 @@ myCoinCounter();
 
 window.addEventListener('DOMContentLoaded', function () {
 
-    // let width = document.body.clientWidth;
-    // let height = window.outerHeight;
-    // if (width <= 1903 || height <= 969) {
-    //     flag = confirm("全画面表示推奨です。");
-    //     if ( flag == true ){
-    //         document.body.requestFullscreen();
-    //     }
-    // }
-
     //==============メニュー.html==============//
     let path = location.pathname;
     if (path == "/menu.html") {
@@ -265,14 +254,6 @@ window.addEventListener('DOMContentLoaded', function () {
             selectBoxList();
             selectBoxImage();
         })
-        // var src = skin.getAttribute('src');
-        // // var $listAItems = document.getElementsByClassName("item").children;
-        // // for (var $i = 0; $i < $listAItems.length; $i++) {
-        // //     $listAItems[$i].onclick =
-        // //         function () {
-                    
-        // //         };
-        // // }
     }
     //==============ガチャ.html==============//
     path = location.pathname;
