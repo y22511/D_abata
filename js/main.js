@@ -56,8 +56,8 @@ const SKIN_NUM = 18;  //スキンの種類
 
 const HEAD_SKIN = ["normal_head.PNG", "christmas_head.PNG", "kanhuku_head.PNG", "odairisama_head.PNG", "ohinasama_head.PNG", "pajama_head.PNG", "pumpkin_head.PNG", "rabbit_head.PNG", "wizard_head.PNG"]; //あたま
 const BODY_SKIN = ["normal_body.PNG", "christmas_body.PNG", "kanhuku_body.PNG", "odairisama_body.PNG", "ohinasama_body.PNG", "pajama_body.PNG", "pumpkin_body.PNG", "rabbit_body.PNG", "wizard_body.PNG"]; //からだ
-const HEAD_SKIN_ITEM = ["", "head-item/christmas_head_item.PNG", "head-item/kanhuku_head_item.PNG", "head-item/odairisama_head_item.PNG", "head-item/ohinasama_head_item.PNG", "head-item/pajama_head_item.PNG", "head-item/pumpkin_head_item.PNG", "head-item/rabbit_head_item.PNG", "head-item/wizard_head_item.PNG"]; //あたま(item)
-const BODY_SKIN_ITEM = ["", "body-item/christmas_body_item.PNG", "body-item/kanhuku_body_item.PNG", "body-item/odairisama_body_item.PNG", "body-item/ohinasama_body_item.PNG", "body-item/pajama_body_item.PNG", "body-item/pumpkin_body_item.PNG", "body-item/rabbit_body_item.PNG", "body-item/wizard_body_item.PNG"]; //からだ(item)
+const HEAD_SKIN_ITEM = ["", "head-item/christmas_head_item.PNG", "head-item/kanhuku_head_item.PNG", "head-item/odairisama_head_item.PNG", "head-item/ohinasama_head_item.PNG", "head-item/pajama_head_item.PNG", "head-item/pumpkin_head_item.PNG", "head-item/rabbit_head_item.PNG", "head-item/wizard_head_item.PNG", "head-item/cowboy_head_item.PNG"]; //あたま(item)
+const BODY_SKIN_ITEM = ["", "body-item/christmas_body_item.PNG", "body-item/kanhuku_body_item.PNG", "body-item/odairisama_body_item.PNG", "body-item/ohinasama_body_item.PNG", "body-item/pajama_body_item.PNG", "body-item/pumpkin_body_item.PNG", "body-item/rabbit_body_item.PNG", "body-item/wizard_body_item.PNG", "head-item/cowboy_body_item.PNG"]; //からだ(item)
 
 let myHeadSkinNum = Number(searchValueCookie('myHeadSkinNum'));
 if (myHeadSkinNum == "") { myHeadSkinNum = 0 };
@@ -126,23 +126,42 @@ function selectBoxRemove() {
     }
 }
 function selectBoxImage() {
-    let mySkinImage = document.createElement('img');
+    let mySkinImage = [];
     let pickList = 0;
+    let pickNum = 0;
+    let skinImage = [];
+    let createImage = [];
     for (let i = 0; i < mySkinNum - 1; i++) {
         if (searchValueCookie('mySkin' + i).slice(0, 4) == selectItem) {
-            let skinImage = {
+            let skinObj = {
                 class: 'skinImage',
                 src: 'img/' + searchValueCookie('mySkin' + i),
                 alt: 'マイスキン',
             }
-            FuncSetAttribute(mySkinImage, skinImage);
-            let createImage = document.getElementsByClassName('item')[pickList];
-            console.log(createImage);
-            createImage.appendChild(mySkinImage);
-            pickList += 1;
-        }
+            skinImage.push(skinObj);
+            // mySkinImage.push(document.createElement('img'));
+            mySkinImage[pickNum] = document.createElement('img');
+            console.log(mySkinImage);
+            FuncSetAttribute(mySkinImage[pickNum], skinImage[pickNum]);
 
+            createImage.push(document.getElementsByClassName('item')[pickList]);
+            console.log(mySkinImage)
+            createImage[pickNum].appendChild(mySkinImage[pickNum]);
+            pickList += 1;
+            pickNum += 1;
+        }
     }
+    for (let j = 0; j < skinImage.length; j++) {
+        // FuncSetAttribute(mySkinImage, skinImage);
+        // createImage.push(document.getElementsByClassName('item')[pickList]);
+
+        // console.log(createImage);
+        // createImage[pickNum].appendChild(mySkinImage);
+        // console.log(createImage[pickNum]);
+        // pickList += 1;
+        // pickNum += 1;
+    }
+    
 
 }
 
@@ -163,7 +182,7 @@ function getSkin(){
         let randomNum1 = Math.floor( Math.random() * 10) % 2;
         let randomNum2 = Math.floor( Math.random() * SKIN_NUM / 2 - 1 ) + 1; // 1 ~ 8
         valueImg = HEAD_OR_BODY[randomNum1][randomNum2];
-        if (searchValueCookie(valueImg) == "" && valueImg != "") {
+        if (searchNameCookie(valueImg) == "" && valueImg != "") {
             document.cookie = 'mySkin' + mySkinNum + '=' + valueImg;
             switch (randomNum1) {
                 case 0: 
@@ -233,14 +252,14 @@ myCoinCounter();
 
 window.addEventListener('DOMContentLoaded', function() {
 
-    let width = document.body.clientWidth;
-    let height = window.outerHeight;
-    if (width <= 1903 || height <= 969) {
-        flag = confirm("全画面表示推奨です。");
-        if ( flag == true ){
-            document.body.requestFullscreen();
-        }
-    }
+    // let width = document.body.clientWidth;
+    // let height = window.outerHeight;
+    // if (width <= 1903 || height <= 969) {
+    //     flag = confirm("全画面表示推奨です。");
+    //     if ( flag == true ){
+    //         document.body.requestFullscreen();
+    //     }
+    // }
     
     //==============メニュー.html==============//
     let path = location.pathname;
