@@ -4,6 +4,19 @@ function FuncSetAttribute(origin, obj) {
         origin.setAttribute(i[0], i[1]);
     }
 }
+function searchArrayNum(skinImgSrc) {
+    for (let i = 0; i < SKIN_NUM / 2; i++) {
+        if (selectItem == 'head') {
+            if (HEAD_SKIN_ITEM[i] == skinImgSrc) {
+                return i;
+            }
+        } else {
+            if (BODY_SKIN_ITEM[i] == skinImgSrc) {
+                return i;
+            }
+        }
+    }
+}
 //==============Cookie==============//
 function nameCookie() {
     let name=[2];
@@ -52,10 +65,10 @@ function searchNameCookie(item) {
 
 //==============skin==============//
 
-const SKIN_NUM = 18;  //スキンの種類
+const SKIN_NUM = 20;  //スキンの種類
 
-const HEAD_SKIN = ["normal_head.PNG", "christmas_head.PNG", "kanhuku_head.PNG", "odairisama_head.PNG", "ohinasama_head.PNG", "pajama_head.PNG", "pumpkin_head.PNG", "rabbit_head.PNG", "wizard_head.PNG"]; //あたま
-const BODY_SKIN = ["normal_body.PNG", "christmas_body.PNG", "kanhuku_body.PNG", "odairisama_body.PNG", "ohinasama_body.PNG", "pajama_body.PNG", "pumpkin_body.PNG", "rabbit_body.PNG", "wizard_body.PNG"]; //からだ
+const HEAD_SKIN = ["head/normal_head.PNG", "head/christmas_head.PNG", "kanhuku_head.PNG", "head/odairisama_head.PNG", "head/ohinasama_head.PNG", "head/pajama_head.PNG", "pumpkin_head.PNG", "head/rabbit_head.PNG", "head/wizard_head.PNG", "head/cowboy_head.PNG"]; //あたま
+const BODY_SKIN = ["body/normal_body.PNG", "body/christmas_body.PNG", "body/kanhuku_body.PNG", "body/odairisama_body.PNG", "body/ohinasama_body.PNG", "body/pajama_body.PNG", "body/pumpkin_body.PNG", "body/rabbit_body.PNG", "body/wizard_body.PNG", "body/cowboy_body.PNG"]; //からだ
 const HEAD_SKIN_ITEM = ["", "head-item/christmas_head_item.PNG", "head-item/kanhuku_head_item.PNG", "head-item/odairisama_head_item.PNG", "head-item/ohinasama_head_item.PNG", "head-item/pajama_head_item.PNG", "head-item/pumpkin_head_item.PNG", "head-item/rabbit_head_item.PNG", "head-item/wizard_head_item.PNG", "head-item/cowboy_head_item.PNG"]; //あたま(item)
 const BODY_SKIN_ITEM = ["", "body-item/christmas_body_item.PNG", "body-item/kanhuku_body_item.PNG", "body-item/odairisama_body_item.PNG", "body-item/ohinasama_body_item.PNG", "body-item/pajama_body_item.PNG", "body-item/pumpkin_body_item.PNG", "body-item/rabbit_body_item.PNG", "body-item/wizard_body_item.PNG", "head-item/cowboy_body_item.PNG"]; //からだ(item)
 
@@ -151,12 +164,17 @@ function selectBoxImage() {
 }
 
 function itemSelect(itemNum) {
+    let skinImg = document.querySelectorAll('.skinImage')[itemNum];
+    let skinImgSrc = skinImg.getAttribute('src').slice(4);
+    let skinArrayNum = searchArrayNum(skinImgSrc);
+    let selectSkin = '';
     if (selectItem == 'head') {
-        HEAD_SKIN[itemNum];
-        console.log(HEAD_SKIN[itemNum]);
+        selectSkin = 'img/' + HEAD_SKIN[skinArrayNum];
     } else if (selectItem == 'body') {
-        BODY_SKIN[itemNum];
+        selectSkin = 'img/' + BODY_SKIN[skinArrayNum];
     }
+    let itemImage = document.querySelector('.' + selectItem + '_img');
+    itemImage.src = selectSkin;
 }
 
 
@@ -246,11 +264,11 @@ myCoinCounter();
 
 window.addEventListener('DOMContentLoaded', function() {
 
-    let width = document.body.clientWidth;
-    let height = window.outerHeight;
-    if (width <= 1903 || height <= 969) {
-        flag = confirm("全画面表示推奨です。");
-    }
+    // let width = document.body.clientWidth;
+    // let height = window.outerHeight;
+    // if (width <= 1903 || height <= 969) {
+    //     flag = confirm("全画面表示推奨です。");
+    // }
     
     //==============メニュー.html==============//
     let path = location.pathname;
