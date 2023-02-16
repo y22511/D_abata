@@ -1,6 +1,6 @@
 body {
     height: 100vh;
-    background: url(/img/body_background.png) no-repeat center center;
+    background: url("../img/body_background.png") no-repeat center center;
     background-attachment: fixed;
     background-size: cover;
     overflow: hidden;
@@ -485,7 +485,7 @@ body {
 
 //==========ゲーム画面==========//
 #game {
-    background: url(/img/game/game_background.jpg) no-repeat center center;
+    background: url("../img/game/game_background.jpg") no-repeat center center;
     background-attachment: fixed;
     background-size: cover;
     #game #game {

@@ -161,7 +161,6 @@ function selectBoxList() {
     let listNum = 0;
     if (selectItem == 'head') {
         listNum = myHeadSkinNum;
-        console.log(listNum);
     } else if (selectItem == 'body') {
         listNum = myBodySkinNum;
     }
@@ -370,8 +369,9 @@ function update() {
     let updatedX = x;
     let updatedY = y;
     if (isGameClear) {
-        alert("5コインゲット!");
         document.cookie = 'myCoin=' + (myCoin + 5);
+        console.log(searchValueCookie('myCoin'));
+        alert("5コインゲット!");
         isGameClear = false;
         isJump = false;
         updatedX = 0;
@@ -507,11 +507,11 @@ if(myCoin == "") { myCoin = 0; };
 
 window.addEventListener('DOMContentLoaded', function() {
 
-    // let width = document.body.clientWidth;
-    // let height = window.outerHeight;
-    // if (width <= 1903 || height <= 969) {
-    //     flag = confirm("全画面表示推奨です。");
-    // }
+    let width = document.body.clientWidth;
+    let height = window.outerHeight;
+    if (width <= 1903 || height <= 969) {
+        flag = confirm("全画面表示推奨です。");
+    }
     
     //==============メニュー.html==============//
     let path = location.pathname.slice(-10);
