@@ -80,6 +80,11 @@ let mySkinNum = myHeadSkinNum + myBodySkinNum;
 let valueImg = "";
 let selectItem = 'head';
 
+if (searchValueCookie('selectSkinHead') == "") 
+    document.cookie = 'selectSkinHead =' + HEAD_SKIN[0];
+if (searchValueCookie('selectSkinBody') == "") 
+    document.cookie = 'selectSkinBody =' + BODY_SKIN[0];
+
 //==============game==============//
 
 // キーボードの入力状態を管理する配列の定義
@@ -233,8 +238,10 @@ function itemSelect(itemNum) {
     let selectSkin = '';
     if (selectItem == 'head') {
         selectSkin = 'img/' + HEAD_SKIN[skinArrayNum];
+        document.cookie = 'selectSkinHead =' + HEAD_SKIN[skinArrayNum];
     } else if (selectItem == 'body') {
         selectSkin = 'img/' + BODY_SKIN[skinArrayNum];
+        document.cookie = 'selectSkinBody =' + BODY_SKIN[skinArrayNum];
     }
     let itemImage = document.querySelector('.' + selectItem + '_img');
     itemImage.src = selectSkin;
@@ -446,9 +453,16 @@ function update() {
     }
 
     // playrの画像を表示
-    let image = new Image();
-    image.src = "img/game/normalhanten.PNG";
-    ctx.drawImage(image, x, y, IMG_SIZE, IMG_SIZE);
+    // let image = new Image();
+    // image.src = "img/game/normalhanten.PNG";
+    // ctx.drawImage(image, x, y, IMG_SIZE, IMG_SIZE);
+    let imageHead = new Image();
+    imageHead.src = "img/" + searchValueCookie('selectSkinHead');
+    ctx.drawImage(imageHead, x, y+8, IMG_SIZE, IMG_SIZE);
+
+    let imageBody = new Image();
+    imageBody.src = "img/" + searchValueCookie('selectSkinBody');
+    ctx.drawImage(imageBody, x, y+8, IMG_SIZE, IMG_SIZE);
 
     // 敵の画像を表示
     let enemyImage = new Image();
@@ -459,7 +473,7 @@ function update() {
 
     // ゴールの画像を表示
     image = new Image();
-    image.src = "img/game/normal.PNG";
+    image.src = "img/coin.PNG";
     ctx.drawImage(image, GOAL_X, GOAL_Y, IMG_SIZE, IMG_SIZE);
 
     // ブロックを表示
