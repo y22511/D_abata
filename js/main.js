@@ -93,6 +93,7 @@ let input_key = new Array();
 //キャラの設定
 const IMG_SIZE = 100;
 const CHARA_SPEED = 4;
+const ENEMY_SIZE = 80;
 // キャラの配置初期値
 let x = 0;
 let y = 300;
@@ -246,7 +247,12 @@ function itemSelect(itemNum) {
     let itemImage = document.querySelector('.' + selectItem + '_img');
     itemImage.src = selectSkin;
 }
-
+function nonItemSelect() {
+    let headItem = document.querySelector('.head_img');
+    let bodyItem = document.querySelector('.body_img');
+    headItem.src = 'img/' + searchValueCookie('selectSkinHead');
+    bodyItem.src = 'img/' + searchValueCookie('selectSkinBody');
+}
 
 
 //==============Gacha==============//
@@ -264,7 +270,6 @@ function getSkin(){
         let randomNum1 = Math.floor( Math.random() * 10) % 2;
         let randomNum2 = Math.floor( Math.random() * (SKIN_NUM / 2 - 1)) + 1;
         valueImg = HEAD_OR_BODY[randomNum1][randomNum2];
-        console.log(randomNum2);
         if (searchNameCookie(valueImg) == "" && valueImg != "") {
             document.cookie = 'mySkin' + mySkinNum + '=' + valueImg;
             switch (randomNum1) {
@@ -356,13 +361,13 @@ function update() {
         if (enemy.isJump) {
             updatedEnemyY = enemy.y + enemy.vy;
             updatedEnemyVy = enemy.vy + 0.5;
-            const blockTargetIsOn = getBlockTargetIsOn(enemy.x, enemy.y, updatedEnemyX, updatedEnemyY);
+            const blockTargetIsOn = getEnemyBlockTargetIsOn(enemy.x, enemy.y, updatedEnemyX, updatedEnemyY);
             if (blockTargetIsOn !== null) {// ブロックが取得できた場合には、そのブロックで止まる
                 updatedEnemyY = blockTargetIsOn.y - IMG_SIZE;
                 updatedEnemyInJump = false;
             }
         } else { //ジャンプしていない状態でブロックが取得できなかったら
-            if (getBlockTargetIsOn(enemy.x, enemy.y, updatedEnemyX, updatedEnemyY) === null) {
+            if (getEnemyBlockTargetIsOn(enemy.x, enemy.y, updatedEnemyX, updatedEnemyY) === null) {
                 updatedEnemyInJump = true; //上記のif文が実行される(ジャンプと同じ扱いにする)
                 updatedEnemyVy = 0;
             }
@@ -396,17 +401,18 @@ function update() {
             updatedX = 0;
             updatedY = 0;
             vy = 0;
+            location.reload();
         }
     } else {
         if (input_key[37]) {
-            updatedX = x - CHARA_SPEED;
+            updatedX = x + CHARA_SPEED;
         }
         if (input_key[38] && !isJump ) {
-            vy = -10;
+            vy = -14;
             isJump = true;
         }
         if (input_key[39]) {
-            updatedX = x + CHARA_SPEED;
+            updatedX = x - CHARA_SPEED;
         }
         if (isJump) {
             updatedY = y + vy;
@@ -435,7 +441,7 @@ function update() {
 
     if (!isGameOver) {
       for (const enemy of enemies) { // すべて敵で当たり判定を調査
-            let isHit = isAreaOverlap(x, y, IMG_SIZE, IMG_SIZE, enemy.x, enemy.y, IMG_SIZE, IMG_SIZE);
+            let isHit = isAreaOverlap(-x, y, IMG_SIZE, IMG_SIZE, enemy.x + 40, enemy.y + 40, ENEMY_SIZE, ENEMY_SIZE);
             if(isHit) {//重なっていて
                 if (isJump && vy > 0) { // ジャンプしていて、落下している状態で敵にぶつかった場合には
                     vy = -7; //上向きのジャンプ
@@ -446,29 +452,30 @@ function update() {
                 }
             }
         }
-        isHit = isAreaOverlap(x, y, IMG_SIZE, IMG_SIZE, GOAL_X, GOAL_Y, IMG_SIZE, IMG_SIZE);
+        isHit = isAreaOverlap(-x, y, IMG_SIZE, IMG_SIZE, GOAL_X + 48, GOAL_Y, IMG_SIZE, IMG_SIZE);
         if (isHit) {
             isGameClear = true;
         }
     }
 
-    // playrの画像を表示
-    // let image = new Image();
-    // image.src = "img/game/normalhanten.PNG";
-    // ctx.drawImage(image, x, y, IMG_SIZE, IMG_SIZE);
+    // playrの画像を表示h
+    ctx.save();
+    ctx.transform(-1, 0, 0, 1, IMG_SIZE, 0);
+    
     let imageHead = new Image();
     imageHead.src = "img/" + searchValueCookie('selectSkinHead');
     ctx.drawImage(imageHead, x, y+8, IMG_SIZE, IMG_SIZE);
-
     let imageBody = new Image();
     imageBody.src = "img/" + searchValueCookie('selectSkinBody');
     ctx.drawImage(imageBody, x, y+8, IMG_SIZE, IMG_SIZE);
+
+    ctx.restore();
 
     // 敵の画像を表示
     let enemyImage = new Image();
     enemyImage.src = "img/game/mouse.png";
     for (const enemy of enemies) {
-        ctx.drawImage(enemyImage, enemy.x, enemy.y, IMG_SIZE, IMG_SIZE);
+        ctx.drawImage(enemyImage, enemy.x, enemy.y + 20, ENEMY_SIZE, ENEMY_SIZE);
     }
 
     // ゴールの画像を表示
@@ -486,6 +493,27 @@ function update() {
 
 // ブロック上に存在していればそのブロックの情報を、存在していなければnullを返す
 function getBlockTargetIsOn(x, y, updatedX, updatedY) {
+    for (const block of blocks) {
+        console.log('x=' + x, 'ux=' + updatedX , 'bx=' + block.x , 'bw=' + block.w);
+        //更新前はキャラ下部が地面以上　かつ　更新後はキャラ下部が地面以下
+        if (y + IMG_SIZE <= block.y && updatedY + IMG_SIZE >= block.y) {
+            if (//このifを満たすときはブロックがないので取得できない
+            //キャラ右端 <= ブロック左端 または　キャラ左端 >= ブロック右端
+            (x - IMG_SIZE >= -block.x || x <= -block.x - block.w) &&
+            (updatedX - IMG_SIZE >= -block.x || updatedX <= -block.x - block.w)
+            // (x + IMG_SIZE <= block.x || x >= block.x + block.w) &&
+            // (updatedX + IMG_SIZE <= block.x || updatedX >= block.x + block.w)
+            ) {
+            // ブロックの上にいない場合には何もしない
+            continue;
+            }
+        // ブロックの上にいる場合には、そのブロック要素を返す
+        return block;
+        }
+    }// 最後までブロック要素を返さなかった場合(すべてcontinue処理された場合)
+    return null; //ブロック要素の上にいないということなのでnullを返却する
+}
+function getEnemyBlockTargetIsOn(x, y, updatedX, updatedY) {
     for (const block of blocks) {
         //更新前はキャラ下部が地面以上　かつ　更新後はキャラ下部が地面以下
         if (y + IMG_SIZE <= block.y && updatedY + IMG_SIZE >= block.y) {
@@ -523,10 +551,35 @@ window.addEventListener('DOMContentLoaded', function() {
 
     let width = document.body.clientWidth;
     let height = window.outerHeight;
-    if (width <= 1903 || height <= 969) {
+    if (width <= 1200 || height <= 700) {
         flag = confirm("全画面表示推奨です。");
     }
     
+    //==============トップ.html==============//
+    document.getElementById("start_button").onclick = function () {
+        // cookie 入っているか確認して分岐
+        if (document.cookie != "") {
+            swal("本当にはじめからにしますか？", {
+                buttons: {
+                    cancel: "いいえ",
+                    yes: "はい"
+                }
+            }).then((value) => {
+                switch(value) {
+                    case "cancel": 
+                        
+                        console.log("ddd");
+                        break;
+                    
+                    case "yes":
+                        //クッキー削除
+                        console.log("new");
+                }
+            });
+        }
+        swal('ゲームを始めます。');
+    };   
+
     //==============メニュー.html==============//
     let path = location.pathname.slice(-10);
     if (path == "/menu.html") {
@@ -537,6 +590,7 @@ window.addEventListener('DOMContentLoaded', function() {
         selectBoxList();
         nonSelectBoxImage();
         selectBoxImage();
+        nonItemSelect();
         document.querySelector('.select-btn').addEventListener('click', function(e) {
             if (e.target.className != 'select-btn') {
                 let sbtn = document.querySelectorAll('.s-btn');

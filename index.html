@@ -21,30 +21,6 @@
     </ul>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="js/main.js"></script>
-    <script>
-     document.getElementById("start_button").onclick = function () {
-            // cookie 入っているか確認して分岐
-            if (document.cookie != "") {
-                // console.log(document.cookie);
-                var options = {
-                    text: 'データを削除しますか？',
-                    buttons: {
-                        cancel: 'キャンセル',
-                        ok: '削除する'
-                    }
-                }
-                console.log(document.cookie);
-                swal(options).then(function (value) {
-                    if (value) {
-                        // console.log(document.cookie);
-                        //表示するを選んだ場合の処理
-                        swal('ゲームを始めます。');
-                    }
-                });
-            }
-            swal('ゲームを始めます。');
-        };   
-    </script>
 </body>
 
 </html>
