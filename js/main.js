@@ -17,6 +17,12 @@ function searchArrayNum(skinImgSrc) {
         }
     }
 }
+function newGame() {
+    nameCookie().forEach(function(name) {
+        clearCookie(name);
+    })
+}
+
 //==============Cookie==============//
 function nameCookie() {
     let name=[2];
@@ -59,6 +65,10 @@ function searchNameCookie(item) {
         i++;
     })
     return itemName;
+}
+
+function clearCookie(name) {
+    document.cookie = name + "=; max-age=0";
 }
 
 
@@ -361,13 +371,13 @@ function update() {
         if (enemy.isJump) {
             updatedEnemyY = enemy.y + enemy.vy;
             updatedEnemyVy = enemy.vy + 0.5;
-            const blockTargetIsOn = getEnemyBlockTargetIsOn(enemy.x, enemy.y, updatedEnemyX, updatedEnemyY);
+            const blockTargetIsOn = getEnemyBlockTargetIsOn(enemy.x-32, enemy.y, updatedEnemyX-32, updatedEnemyY);
             if (blockTargetIsOn !== null) {// ブロックが取得できた場合には、そのブロックで止まる
                 updatedEnemyY = blockTargetIsOn.y - IMG_SIZE;
                 updatedEnemyInJump = false;
             }
         } else { //ジャンプしていない状態でブロックが取得できなかったら
-            if (getEnemyBlockTargetIsOn(enemy.x, enemy.y, updatedEnemyX, updatedEnemyY) === null) {
+            if (getEnemyBlockTargetIsOn(enemy.x-32, enemy.y, updatedEnemyX-32, updatedEnemyY) === null) {
                 updatedEnemyInJump = true; //上記のif文が実行される(ジャンプと同じ扱いにする)
                 updatedEnemyVy = 0;
             }
@@ -381,27 +391,27 @@ function update() {
     let updatedX = x;
     let updatedY = y;
     if (isGameClear) {
-        document.cookie = 'myCoin=' + (myCoin + 5);
-        console.log(searchValueCookie('myCoin'));
-        alert("5コインゲット!");
         isGameClear = false;
         isJump = false;
         updatedX = 0;
         updatedY = 0;
         vy = 0;
-        history.back();
+        document.cookie = 'myCoin=' + (myCoin + 5);
+        swal("コイン×５ゲット！ メニュー画面に移ります。").then(function(){
+            location.href = location.pathname.slice(0, -10) + '/menu.html';
+        });
     } else if (isGameOver){
         updatedY = y + vy;
         vy = vy + 0.5;
-        if (y > CANVAS_HEIGHT) { //キャラが更に下に落ちてきた時
-            alert("GAME OVER");
-            
+        if (y > CANVAS_HEIGHT) { //キャラが更に下に落ちてきた時            
             isGameOver = false;
             isJump = false;
             updatedX = 0;
             updatedY = 0;
             vy = 0;
-            location.reload();
+            swal("GAME OVER").then(function () {
+                location.reload();
+            });
         }
     } else {
         if (input_key[37]) {
@@ -441,7 +451,7 @@ function update() {
 
     if (!isGameOver) {
       for (const enemy of enemies) { // すべて敵で当たり判定を調査
-            let isHit = isAreaOverlap(-x, y, IMG_SIZE, IMG_SIZE, enemy.x + 40, enemy.y + 40, ENEMY_SIZE, ENEMY_SIZE);
+            let isHit = isAreaOverlap(-x, y -40, IMG_SIZE, IMG_SIZE -28, enemy.x +40, enemy.y -24, ENEMY_SIZE - 60, ENEMY_SIZE);
             if(isHit) {//重なっていて
                 if (isJump && vy > 0) { // ジャンプしていて、落下している状態で敵にぶつかった場合には
                     vy = -7; //上向きのジャンプ
@@ -452,7 +462,7 @@ function update() {
                 }
             }
         }
-        isHit = isAreaOverlap(-x, y, IMG_SIZE, IMG_SIZE, GOAL_X + 48, GOAL_Y, IMG_SIZE, IMG_SIZE);
+        isHit = isAreaOverlap(-x, y, IMG_SIZE, IMG_SIZE, GOAL_X +48, GOAL_Y, IMG_SIZE, IMG_SIZE);
         if (isHit) {
             isGameClear = true;
         }
@@ -494,15 +504,12 @@ function update() {
 // ブロック上に存在していればそのブロックの情報を、存在していなければnullを返す
 function getBlockTargetIsOn(x, y, updatedX, updatedY) {
     for (const block of blocks) {
-        console.log('x=' + x, 'ux=' + updatedX , 'bx=' + block.x , 'bw=' + block.w);
         //更新前はキャラ下部が地面以上　かつ　更新後はキャラ下部が地面以下
         if (y + IMG_SIZE <= block.y && updatedY + IMG_SIZE >= block.y) {
             if (//このifを満たすときはブロックがないので取得できない
-            //キャラ右端 <= ブロック左端 または　キャラ左端 >= ブロック右端
-            (x - IMG_SIZE >= -block.x || x <= -block.x - block.w) &&
-            (updatedX - IMG_SIZE >= -block.x || updatedX <= -block.x - block.w)
-            // (x + IMG_SIZE <= block.x || x >= block.x + block.w) &&
-            // (updatedX + IMG_SIZE <= block.x || updatedX >= block.x + block.w)
+            //キャラ右端 >= ブロック左端 または　キャラ左端 <= ブロック右端
+            (x - IMG_SIZE >= -block.x -28 || x <= -block.x - block.w +24) &&
+            (updatedX - IMG_SIZE >= -block.x -28 || updatedX <= -block.x - block.w +24)
             ) {
             // ブロックの上にいない場合には何もしない
             continue;
@@ -556,32 +563,30 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     
     //==============トップ.html==============//
-    document.getElementById("start_button").onclick = function () {
-        // cookie 入っているか確認して分岐
+    let path = location.pathname.slice(-11);
+    if (path == "/index.html") {
         if (document.cookie != "") {
-            swal("本当にはじめからにしますか？", {
-                buttons: {
-                    cancel: "いいえ",
-                    yes: "はい"
-                }
-            }).then((value) => {
-                switch(value) {
-                    case "cancel": 
-                        
-                        console.log("ddd");
-                        break;
-                    
-                    case "yes":
-                        //クッキー削除
-                        console.log("new");
-                }
+            document.querySelector("#start_button").addEventListener('click', function() {
+            // cookie 入っているか確認して分岐
+                swal("本当にはじめからにしますか？", {
+                    buttons: {
+                        cancel: "いいえ",
+                        yes: "はい"
+                    }
+                }).then((value) => {
+                    if (value == 'yes') {
+                        newGame();
+                        swal("はじめからゲームを始めます").then(ok => {
+                            location.href = location.pathname.slice(0, -11) + '/menu.html';
+                        });
+                    }
+                });
             });
         }
-        swal('ゲームを始めます。');
-    };   
+    }   
 
     //==============メニュー.html==============//
-    let path = location.pathname.slice(-10);
+    path = location.pathname.slice(-10);
     if (path == "/menu.html") {
         //myCoin
         myCoinCounter();
@@ -639,7 +644,6 @@ window.addEventListener('DOMContentLoaded', function() {
     //==============ゲーム.html==============//
     path = location.pathname.slice(-10);
     if (path == "/game.html") {
-        
         // キーボードの入力イベント
         window.addEventListener("keydown", handleKeydown);
 
